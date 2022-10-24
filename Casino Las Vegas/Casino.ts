@@ -1,7 +1,7 @@
 export abstract class Casino{
 
-public nombreCasino:string;
-public cantFichas:number;
+private nombreCasino:string;
+private cantFichas:number;
 constructor(paramNombreCasino:string, paramFichas:number){
     this.nombreCasino= paramNombreCasino;
     this.cantFichas=paramFichas;
