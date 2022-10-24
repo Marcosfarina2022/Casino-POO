@@ -1,9 +1,9 @@
 export abstract class Casino{
 
-private nombreCasino:string;
+private nombre:string;
 private cantFichas:number;
-constructor(paramNombreCasino:string, paramFichas:number){
-    this.nombreCasino= paramNombreCasino;
+constructor(paramNombre:string, paramFichas:number){
+    this.nombre= paramNombre;
     this.cantFichas=paramFichas;
 }
 
@@ -11,7 +11,7 @@ abstract ingresarApuesta(paramFichas:number);
 abstract calcularApuesta()
 
 public getNombre():string{
-    return this.nombreCasino;
+    return this.nombre;
 }
 
 }
