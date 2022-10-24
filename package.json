@@ -1,0 +1,19 @@
+{
+  "name": "npm-casino-poo",
+  "version": "1.0.0",
+  "description": "Trabajo practico final de programación orientada a objetos(POO). Farina Marcos- Figueroa Melina.",
+  "main": "Main.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Marcosfarina2022/Casino-POO.git"
+  },
+  "author": "Farina Marcos - Figueroa Melina.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/Marcosfarina2022/Casino-POO/issues"
+  },
+  "homepage": "https://github.com/Marcosfarina2022/Casino-POO#readme"
+}
