@@ -1,12 +1,12 @@
 import { Casino } from "./Casino";
 import { Juego } from "./Juego";
-export class TragaMonedas extends Casino implements Juego{
+export class TragaMonedas extends Casino implements Juego {
     protected tipoDeJuego: string;
-    constructor(pTipoDeJuego:string,pNombre:string,pCantidadFichas:number){
-        super(pNombre,pCantidadFichas);
+    constructor(pTipoDeJuego: string, pNombre: string, pCantidadFichas: number) {
+        super(pNombre, pCantidadFichas);
         this.tipoDeJuego = pTipoDeJuego;
     }
-    
+
     ingresarTipoDeJuego(pTipoDeJuego: string): void {
 
     }
@@ -28,6 +28,6 @@ export class TragaMonedas extends Casino implements Juego{
 
     }
 
-    
+
 
 }
