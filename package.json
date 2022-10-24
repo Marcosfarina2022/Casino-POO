@@ -15,5 +15,8 @@
   "bugs": {
     "url": "https://github.com/Marcosfarina2022/Casino-POO/issues"
   },
-  "homepage": "https://github.com/Marcosfarina2022/Casino-POO#readme"
+  "homepage": "https://github.com/Marcosfarina2022/Casino-POO#readme",
+  "dependencies": {
+    "readline-sync": "^1.4.10"
+  }
 }
