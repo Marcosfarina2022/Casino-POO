@@ -1,17 +1,26 @@
-export abstract class Casino {
+import { readlinkSync } from "fs";
+import { TragaMonedas } from "./TragaMonedas";
+
+export class Casino {
 
     private nombre: string;
-    private cantFichas: number;
-    constructor(paramNombre: string, paramFichas: number) {
-        this.nombre = paramNombre;
-        this.cantFichas = paramFichas;
+    private direccion:string;
+    private comprarFichas: number;
+
+    constructor(pComprarFichas: number) {
+        this.nombre = "Las Vegas Casino";
+        this.comprarFichas = pComprarFichas;
     }
 
-    abstract ingresarApuesta(paramFichas: number);
-    abstract calcularApuesta()
 
-    public getNombre(): string {
+    public obtenerNombre(): string {
         return this.nombre;
     }
+    public obtenerDireccion():string{
+        return this.direccion;
+    }
+    public elegirJuego():void{
+        
+        }
+    }
 
-}
