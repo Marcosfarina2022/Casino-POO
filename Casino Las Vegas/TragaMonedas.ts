@@ -1,33 +1,27 @@
 import { Casino } from "./Casino";
-import { Juego } from "./Juego";
-export class TragaMonedas extends Casino implements Juego {
-    protected tipoDeJuego: string;
-    constructor(pTipoDeJuego: string, pNombre: string, pCantidadFichas: number) {
-        super(pNombre, pCantidadFichas);
-        this.tipoDeJuego = pTipoDeJuego;
+import { Cliente } from "./Cliente";
+export abstract class TragaMonedas extends Casino {
+
+    private creditoDisponible: number;
+    private jugador: Cliente;
+    private pozoAcumulado: number;
+
+    constructor(pCreditoDisponible: number, pJugador: Cliente, pFichasCompradas: number) {
+        super(pFichasCompradas);
+        this.creditoDisponible = pCreditoDisponible;
+        this.jugador = pJugador;
+        this.pozoAcumulado = 2000000;
     }
-
-    ingresarTipoDeJuego(pTipoDeJuego: string): void {
-
+    public ingresarApuesta(pApuesta: number): void {
+        if (this.creditoDisponible <= pApuesta) {
+            console.log(this.jugador + " Su apuesta ha sido ingresada su credito es " + this.creditoDisponible);
+        } else {
+            console.log("Saldo insuficiente");
+        }
     }
-
-    obtenerTipoDeJuego(): string {
-
+    public obtenerPozo():number{
+        return this.pozoAcumulado;
     }
-
-    jugar(pTipoDeJuego: string): void {
-
-    }
-
-    ingresarApuesta(paramFichas: number) {
-
-
-    }
-
-    calcularApuesta() {
-
-    }
-
-
-
+    public abstract jugar():void;
+    public abstract calcularGanancia():void;
 }
