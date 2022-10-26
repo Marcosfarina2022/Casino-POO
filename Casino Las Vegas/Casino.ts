@@ -1,10 +1,9 @@
-import { readlinkSync } from "fs";
 import { TragaMonedas } from "./TragaMonedas";
 
 export class Casino {
 
     private nombre: string;
-    private direccion:string;
+    private direccion: string;
     private comprarFichas: number;
 
     constructor(pComprarFichas: number) {
@@ -16,11 +15,11 @@ export class Casino {
     public obtenerNombre(): string {
         return this.nombre;
     }
-    public obtenerDireccion():string{
+    public obtenerDireccion(): string {
         return this.direccion;
     }
-    public elegirJuego():void{
-        
-        }
+    public elegirJuego(): void {
+
     }
+}
 
