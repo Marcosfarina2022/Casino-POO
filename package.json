@@ -18,5 +18,8 @@
   "homepage": "https://github.com/Marcosfarina2022/Casino-POO#readme",
   "dependencies": {
     "readline-sync": "^1.4.10"
+  },
+  "devDependencies": {
+    "@types/node": "^18.11.5"
   }
 }

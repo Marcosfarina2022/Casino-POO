@@ -23,3 +23,5 @@ export class Casino {
     }
 }
 
+console.log("Hola mundo");
+
