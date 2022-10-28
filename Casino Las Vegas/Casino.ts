@@ -1,24 +1,34 @@
-import { TragaMonedas } from "./TragaMonedas";
 import * as RLS from "readline-sync";
 import { RuedaDeLaFortuna } from "./RuedaDeLaFortuna";
 import { QuienQuiereSerMillonario } from "./QuienQuiereSerMillonario";
 import { Dados } from "./Dados";
 import { BlackJack } from "./BlackJack";
-
+import { Ficha } from "./Ficha";
 export class Casino {
 
-    private nombre: string;
+    private nombreCasino: string;
     private direccion: string;
-    private comprarFichas: number;
+    private ficha:Ficha;
+    private comprarCredito: number;
 
-    constructor(pComprarFichas: number) {
-        this.nombre = "Las Vegas Casino";
-        this.comprarFichas = pComprarFichas;
+    constructor(pComprarFichas:Ficha) {
+        this.nombreCasino = "Las Vegas Casino";
+        this.comprarCredito = pComprarFichas.obtenerValor();
+    }
+    public ingresarDinero(pDineroIngresado:number):void{
+        let saldoDisponible: number = 0;
+        if (pDineroIngresado < saldoDisponible){
+            this.comprarCredito = saldoDisponible;
+        }
     }
 
 
+    public obtenerCredito():number{
+        return this.comprarCredito;
+    }
+
     public obtenerNombre(): string {
-        return this.nombre;
+        return this.nombreCasino;
     }
     public obtenerDireccion(): string {
         return this.direccion;
