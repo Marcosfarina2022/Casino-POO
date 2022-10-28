@@ -19,6 +19,11 @@ export abstract class TragaMonedas extends Casino {
             console.log("Saldo insuficiente");
         }
     }
+
+    public obtenerCreditoDisponible(): number{
+        return this.creditoDisponible;
+    }
+
     public obtenerPozo(): number {
         return this.pozoAcumulado;
     }
