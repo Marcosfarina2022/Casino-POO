@@ -7,7 +7,7 @@ export abstract class TragaMonedas extends Casino {
     private pozoAcumulado: number;
 
     constructor(pCreditoDisponible: number, pJugador: Cliente, pFichasCompradas: number) {
-        super(pFichasCompradas);
+        super()
         this.creditoDisponible = pCreditoDisponible;
         this.jugador = pJugador;
         this.pozoAcumulado = 2000000;
@@ -23,7 +23,7 @@ export abstract class TragaMonedas extends Casino {
     public obtenerCreditoDisponible(): number{
         return this.creditoDisponible;
     }
-
+ 
     public obtenerPozo(): number {
         return this.pozoAcumulado;
     }

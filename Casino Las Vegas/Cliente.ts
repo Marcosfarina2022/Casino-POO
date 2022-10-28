@@ -1,3 +1,4 @@
+import { Casino } from "./Casino";
 export class Cliente {
 
     protected nombreJugador: string;
@@ -18,4 +19,4 @@ export class Cliente {
     public setDniJugador(paramDni: number) {
         this.dniJugador = paramDni;
     }
-}
+} 
