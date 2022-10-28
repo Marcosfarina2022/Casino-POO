@@ -1,5 +1,3 @@
-import { TragaMonedas } from "./TragaMonedas";
-
 export class Casino {
 
     private nombre: string;
@@ -25,5 +23,5 @@ export class Casino {
 
 }
 
-console.log("Hola mundo");
+
 

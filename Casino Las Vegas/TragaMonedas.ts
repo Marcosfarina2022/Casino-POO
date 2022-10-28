@@ -13,7 +13,7 @@ export abstract class TragaMonedas extends Casino {
         this.pozoAcumulado = 2000000;
     }
     public ingresarApuesta(pApuesta: number): void {
-        if (this.creditoDisponible <= pApuesta) {
+        if (this.creditoDisponible >= pApuesta) {
             console.log(this.jugador + " Su apuesta ha sido ingresada su credito es " + this.creditoDisponible);
         } else {
             console.log("Saldo insuficiente");
