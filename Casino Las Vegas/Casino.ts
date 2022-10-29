@@ -17,6 +17,7 @@ export class Casino {
         return this.direccion;
     }
     public elegirJuego(): void {
+        
 
 
     }
