@@ -13,7 +13,6 @@ let dados:Dados= new Dados(1, 2);
 let maq1:QuienQuiereSerMillonario= new QuienQuiereSerMillonario(300,50);
 let maq2:RuedaDeLaFortuna= new RuedaDeLaFortuna(1000);
 let juegos:Casino= new Casino(maq2,dados,maq1);
-juegos.elegirJuego();
 //console.log(juegos);
 
 
