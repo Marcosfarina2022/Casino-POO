@@ -19,3 +19,4 @@ export class QuienQuiereSerMillonario extends TragaMonedas {
     }
 
 }
+ 

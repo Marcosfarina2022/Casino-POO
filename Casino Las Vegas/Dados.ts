@@ -1,5 +1,6 @@
 import { Cliente } from "./Cliente";
 import { TragaMonedas } from "./TragaMonedas";
+
 export class Dados {
     private listadoDeCaras: Dados;
     private dado1: number;
@@ -12,12 +13,8 @@ export class Dados {
         this.resultado = 0;
     }
 
-    public mostrarResultado(pDado1: number, pDado2: number): number {
+    public mostrarResultado(pDado1: number, pDado2: number): void {
 
-        for (let i = 0; i < this.listadoDeCaras.length; i++) {
-            this.resultado[i] = pDado1 + pDado2;
-        }
-        return this.resultado;
     }
     public azar(pMin: number, pMax: number) {        // Math.floor(Math.ramdom()* ((max-min)+min))
 
@@ -26,4 +23,4 @@ export class Dados {
     }
     
 
-} 
+}  
