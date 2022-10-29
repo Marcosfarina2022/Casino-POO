@@ -26,10 +26,7 @@ export class Casino {
             this.comprarCredito = saldoDisponible;
         }
     }
-    public jugarBlackJack(){
-        return 
-    }
-
+    
     public obtenerCredito():number{
         return this.comprarCredito;
     }
@@ -37,14 +34,14 @@ export class Casino {
     public obtenerNombre(): string {
         return this.nombreCasino;
     }
-    public elegirJuego(): void {
+    public elegirJuego(pJugarCartas:BlackJack,pJugarDados:Dados,pJugarMillonario:QuienQuiereSerMillonario,pJugarRueda:RuedaDeLaFortuna): void {
 
-        let opcion: string = RLS.question();
+        let opcion: string="0";
         while (opcion == "1" || opcion == "2" || opcion == "3" || opcion == "4" || opcion == "5") {
 
             switch (opcion) {
                 case "1":
-                    RuedaDeLaFortuna;
+                   this.jugarCartas= BlackJack;
                     break;
                 case "2":
                     QuienQuiereSerMillonario;
