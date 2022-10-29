@@ -1,10 +1,10 @@
 import { TragaMonedas } from "./TragaMonedas";
-import { Cliente } from "./Cliente";
+import { Casino } from "./Casino";
 export class RuedaDeLaFortuna extends TragaMonedas {
     private creditoMinimo: number;
     private creditoMaximo: number;
-    constructor(pCreditoDisponible: number, pJugador: Cliente, pFichasCompradas: number) {
-        super(pCreditoDisponible, pJugador, pFichasCompradas);
+    constructor(pCreditoDisponible: number) {
+        super(pCreditoDisponible);
         this.creditoMinimo = 50;
         this.creditoMaximo = 10000;
     }

@@ -12,6 +12,8 @@ var Dados = /** @class */ (function () {
     Dados.prototype.azar = function (pMin, pMax) {
         return Math.floor(Math.random() * pMax - pMin) + pMin;
     };
+    Dados.prototype.jugar = function () {
+    };
     return Dados;
 }());
 exports.Dados = Dados;

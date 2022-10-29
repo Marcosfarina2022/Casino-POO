@@ -12,9 +12,9 @@ export class Casino {
     private jugarQuienQuiereSerMillonario: QuienQuiereSerMillonario;
     private ruedaDeLaFortuna: RuedaDeLaFortuna;
 
-    constructor(pJugarCartas:BlackJack,pJugarRueda:RuedaDeLaFortuna,pJugarDados:Dados,pJugarMillonario:QuienQuiereSerMillonario) {
+    constructor(pJugarRueda:RuedaDeLaFortuna,pJugarDados:Dados,pJugarMillonario:QuienQuiereSerMillonario) {
         this.nombreCasino = "Las Vegas Casino";
-        this.jugarCartas = pJugarCartas;
+        this.jugarCartas.jugar();
         this.jugarDados = pJugarDados;
         this.jugarQuienQuiereSerMillonario = pJugarMillonario;
         this.ruedaDeLaFortuna = pJugarRueda;
@@ -36,27 +36,26 @@ export class Casino {
     }
     public elegirJuego(pJugarCartas:BlackJack,pJugarDados:Dados,pJugarMillonario:QuienQuiereSerMillonario,pJugarRueda:RuedaDeLaFortuna): void {
 
-        let opcion: string="0";
+        let opcion: String= "";
         while (opcion == "1" || opcion == "2" || opcion == "3" || opcion == "4" || opcion == "5") {
 
             switch (opcion) {
                 case "1":
-                   this.jugarCartas= BlackJack;
+                console.log("El juego elegido es Blackjack");
+                 //pJugarCartas;
                     break;
                 case "2":
-                    QuienQuiereSerMillonario;
+                pJugarDados;
                     break;
                 case "3":
-                    Dados;
+                pJugarMillonario;
                     break;
-                    case "4":
-                        BlackJack;
-                        break;
-                        case "5":
-                        console.log("salir");
-                        break;
-
-
+                case "4":
+                pJugarRueda;
+                    break;
+                case "5":
+                    console.log("salir");
+                    break;
 
             }
         }

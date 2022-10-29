@@ -1,37 +1,43 @@
 "use strict";
 exports.__esModule = true;
 exports.Casino = void 0;
-var RLS = require("readline-sync");
-var RuedaDeLaFortuna_1 = require("./RuedaDeLaFortuna");
-var QuienQuiereSerMillonario_1 = require("./QuienQuiereSerMillonario");
-var Dados_1 = require("./Dados");
-var BlackJack_1 = require("./BlackJack");
 var Casino = /** @class */ (function () {
-    function Casino(pComprarFichas) {
-        this.nombre = "Las Vegas Casino";
-        this.comprarFichas = pComprarFichas;
+    function Casino(pJugarCartas, pJugarRueda, pJugarDados, pJugarMillonario) {
+        this.nombreCasino = "Las Vegas Casino";
+        this.jugarCartas = pJugarCartas;
+        this.jugarDados = pJugarDados;
+        this.jugarQuienQuiereSerMillonario = pJugarMillonario;
+        this.ruedaDeLaFortuna = pJugarRueda;
     }
+    Casino.prototype.ingresarDinero = function (pDineroIngresado) {
+        console.log('Cuantas');
+        var saldoDisponible = 0;
+        if (pDineroIngresado < saldoDisponible) {
+            this.comprarCredito = saldoDisponible;
+        }
+    };
+    Casino.prototype.obtenerCredito = function () {
+        return this.comprarCredito;
+    };
     Casino.prototype.obtenerNombre = function () {
-        return this.nombre;
+        return this.nombreCasino;
     };
-    Casino.prototype.obtenerDireccion = function () {
-        return this.direccion;
-    };
-    Casino.prototype.elegirJuego = function () {
-        var opcion = RLS.question();
+    Casino.prototype.elegirJuego = function (pJugarCartas, pJugarDados, pJugarMillonario, pJugarRueda) {
+        var opcion = "";
         while (opcion == "1" || opcion == "2" || opcion == "3" || opcion == "4" || opcion == "5") {
             switch (opcion) {
                 case "1":
-                    RuedaDeLaFortuna_1.RuedaDeLaFortuna;
+                    console.log("El juego elegido es Blackjack");
+                    //pJugarCartas;
                     break;
                 case "2":
-                    QuienQuiereSerMillonario_1.QuienQuiereSerMillonario;
+                    pJugarDados;
                     break;
                 case "3":
-                    Dados_1.Dados;
+                    pJugarMillonario;
                     break;
                 case "4":
-                    BlackJack_1.BlackJack;
+                    pJugarRueda;
                     break;
                 case "5":
                     console.log("salir");

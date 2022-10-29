@@ -1,24 +1,20 @@
-import { Casino } from "./Casino";
-import { Cliente } from "./Cliente";
-export abstract class TragaMonedas extends Casino {
+
+export abstract class TragaMonedas{
 
     private creditoDisponible: number;
-    private jugador: Cliente;
     private pozoAcumulado: number;
 
-    constructor(pCreditoDisponible: number, pJugador: Cliente, pFichasCompradas: number) {
-        super()
+    constructor(pCreditoDisponible: number) {
         this.creditoDisponible = pCreditoDisponible;
-        this.jugador = pJugador;
         this.pozoAcumulado = 2000000;
     }
-    public ingresarApuesta(pApuesta: number): void {
+    /*public ingresarApuesta(pApuesta: number): void {
         if (this.creditoDisponible >= pApuesta) {
             console.log(this.jugador + " Su apuesta ha sido ingresada su credito es " + this.creditoDisponible);
         } else {
             console.log("Saldo insuficiente");
         }
-    }
+    }*/
 
     public obtenerCreditoDisponible(): number{
         return this.creditoDisponible;

@@ -4,8 +4,14 @@ exports.BlackJack = void 0;
 var BlackJack = /** @class */ (function () {
     function BlackJack() {
     }
+    /*public obtenerCredito():number{
+    }*/
+    BlackJack.prototype.azar = function () {
+    };
     BlackJack.prototype.mostrar = function () {
-        console.log("Hola gente");
+    };
+    BlackJack.prototype.jugar = function () {
+        console.log("Esta jugando");
     };
     return BlackJack;
 }());

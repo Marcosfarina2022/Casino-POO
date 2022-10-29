@@ -1,11 +1,10 @@
-import { Cliente } from "./Cliente";
 import { TragaMonedas } from "./TragaMonedas";
 
 export class QuienQuiereSerMillonario extends TragaMonedas {
     private creditoMinimo: number;
     private doblarApuesta: number;
-    constructor(pDoblarApuesta: number, pCreditoDisponible: number, pJugador: Cliente, pFichasCompradas: number) {
-        super(pCreditoDisponible, pJugador, pFichasCompradas);
+    constructor(pDoblarApuesta: number, pCreditoDisponible: number) {
+        super(pCreditoDisponible);
         this.creditoMinimo = 2000;
         this.doblarApuesta = pDoblarApuesta;
     }

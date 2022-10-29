@@ -1,6 +1,4 @@
-import { Cliente } from "./Cliente";
-import { TragaMonedas } from "./TragaMonedas";
-
+import { Casino } from "./Casino";
 export class Dados {
     private listadoDeCaras: Dados;
     private dado1: number;
@@ -19,6 +17,9 @@ export class Dados {
     public azar(pMin: number, pMax: number) {        // Math.floor(Math.ramdom()* ((max-min)+min))
 
         return Math.floor(Math.random() * pMax - pMin) + pMin;
+
+    }
+    public jugar(){
 
     }
     

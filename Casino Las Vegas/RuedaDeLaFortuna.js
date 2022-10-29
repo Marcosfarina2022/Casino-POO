@@ -19,8 +19,8 @@ exports.RuedaDeLaFortuna = void 0;
 var TragaMonedas_1 = require("./TragaMonedas");
 var RuedaDeLaFortuna = /** @class */ (function (_super) {
     __extends(RuedaDeLaFortuna, _super);
-    function RuedaDeLaFortuna(pCreditoDisponible, pJugador, pFichasCompradas) {
-        var _this = _super.call(this, pCreditoDisponible, pJugador, pFichasCompradas) || this;
+    function RuedaDeLaFortuna(pCreditoDisponible) {
+        var _this = _super.call(this, pCreditoDisponible) || this;
         _this.creditoMinimo = 50;
         _this.creditoMaximo = 10000;
         return _this;
