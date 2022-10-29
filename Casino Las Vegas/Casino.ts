@@ -3,25 +3,32 @@ import { RuedaDeLaFortuna } from "./RuedaDeLaFortuna";
 import { QuienQuiereSerMillonario } from "./QuienQuiereSerMillonario";
 import { Dados } from "./Dados";
 import { BlackJack } from "./BlackJack";
-import { Ficha } from "./Ficha";
 export class Casino {
 
     private nombreCasino: string;
-    private direccion: string;
-    private ficha:Ficha;
     private comprarCredito: number;
+    private jugarCartas: BlackJack;
+    private jugarDados: Dados;
+    private jugarQuienQuiereSerMillonario: QuienQuiereSerMillonario;
+    private ruedaDeLaFortuna: RuedaDeLaFortuna;
 
-    constructor(pComprarFichas:Ficha) {
+    constructor(pJugarCartas:BlackJack,pJugarRueda:RuedaDeLaFortuna,pJugarDados:Dados,pJugarMillonario:QuienQuiereSerMillonario) {
         this.nombreCasino = "Las Vegas Casino";
-        this.comprarCredito = pComprarFichas.obtenerValor();
+        this.jugarCartas = pJugarCartas;
+        this.jugarDados = pJugarDados;
+        this.jugarQuienQuiereSerMillonario = pJugarMillonario;
+        this.ruedaDeLaFortuna = pJugarRueda;
     }
     public ingresarDinero(pDineroIngresado:number):void{
+        console.log('Cuantas')
         let saldoDisponible: number = 0;
         if (pDineroIngresado < saldoDisponible){
             this.comprarCredito = saldoDisponible;
         }
     }
-
+    public jugarBlackJack(){
+        return 
+    }
 
     public obtenerCredito():number{
         return this.comprarCredito;
