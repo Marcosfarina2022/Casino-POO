@@ -1,28 +1,69 @@
+export class  Tragamonedas{
+    protected valorApuesta:number;
+    protected tematica:string;
+    protected probabilidad:number;
 
-export abstract class TragaMonedas{
-
-    private creditoDisponible: number;
-    private pozoAcumulado: number;
-
-    constructor(pCreditoDisponible: number) {
-        this.creditoDisponible = pCreditoDisponible;
-        this.pozoAcumulado = 2000000;
+    constructor(){
+        
+       
     }
-    /*public ingresarApuesta(pApuesta: number): void {
-        if (this.creditoDisponible >= pApuesta) {
-            console.log(this.jugador + " Su apuesta ha sido ingresada su credito es " + this.creditoDisponible);
-        } else {
-            console.log("Saldo insuficiente");
+
+     getValorApuesta():number{
+        return this.valorApuesta;
+    }
+
+    getTematica():string{
+        return this.tematica
+    }
+
+   
+    
+
+    protected dado():number{
+        let dado = Math.random() * ((this.probabilidad + 1) - 1) + 1;
+        return Math.floor(dado);
+    }
+
+    
+
+
+
+    protected pantalla():number[]{
+        let pantalla:number[] = new Array();
+        for (let index = 0; index < 3; index++) {
+            pantalla.push(this.dado());
+            
         }
-    }*/
 
-    public obtenerCreditoDisponible(): number{
-        return this.creditoDisponible;
+        return pantalla
     }
- 
-    public obtenerPozo(): number {
-        return this.pozoAcumulado;
+
+    protected gano(pantalla:number[]):boolean{
+       if((pantalla[0]==pantalla[1] && pantalla[1]==pantalla[2]) ){
+            return true;
+            
+       }else{
+             return false
+       }
+
     }
-    public abstract jugar(): void;
-    public abstract calcularGanancia(): void;
+    
+
+    jugar():string{
+        
+        let pantalla:number[] = this.pantalla();
+        if(this.gano(pantalla)){
+            return  "\n ================= \n"+
+                    " || "+pantalla[0]+" || "+pantalla[1]+" || "+pantalla[2]+" || " +"\n"+
+                    " ================= \n"+
+                    "Gano $"+(this.valorApuesta*2);
+        }else{
+            return "\n ================= \n"+
+                     " || "+pantalla[0]+" || "+pantalla[1]+" || "+pantalla[2]+" || " +"\n"+
+                     " ================= \n"+
+                    "Perdio";
+        }
+    }
+
+
 }

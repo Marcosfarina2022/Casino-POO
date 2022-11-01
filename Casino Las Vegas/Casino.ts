@@ -1,67 +1,75 @@
-import * as RLS from "readline-sync";
-import { RuedaDeLaFortuna } from "./RuedaDeLaFortuna";
 import { QuienQuiereSerMillonario } from "./QuienQuiereSerMillonario";
-import { Dados } from "./Dados";
-import { BlackJack } from "./BlackJack";
-export class Casino {
+import { RuletaDeLaFortuna } from "./ruletaDeLaFortuna";
 
-    private nombreCasino: string;
-    private comprarCredito: number;
-    private jugarCartas: BlackJack;
-    private jugarDados: Dados;
-    private jugarQuienQuiereSerMillonario: QuienQuiereSerMillonario;
-    private ruedaDeLaFortuna: RuedaDeLaFortuna;
+export class Casino{
+    private tragamonedas1:QuienQuiereSerMillonario;
+    private tragamonedas2:RuletaDeLaFortuna
 
-    constructor(pJugarRueda:RuedaDeLaFortuna,pJugarDados:Dados,pJugarMillonario:QuienQuiereSerMillonario) {
-        this.nombreCasino = "Las Vegas Casino";
-        this.jugarCartas.jugar();
-        this.jugarDados = pJugarDados;
-        this.jugarQuienQuiereSerMillonario = pJugarMillonario;
-        this.ruedaDeLaFortuna = pJugarRueda;
-    }
-    public ingresarDinero(pDineroIngresado:number):void{
-        console.log('Cuantas')
-        let saldoDisponible: number = 0;
-        if (pDineroIngresado < saldoDisponible){
-            this.comprarCredito = saldoDisponible;
-        }
-    }
-    
-    public obtenerCredito():number{
-        return this.comprarCredito;
+    constructor(){
+        this.tragamonedas1 = new QuienQuiereSerMillonario();
+        this.tragamonedas2 = new RuletaDeLaFortuna();
+        
     }
 
-    public obtenerNombre(): string {
-        return this.nombreCasino;
-    }
-    public elegirJuego(pJugarCartas:BlackJack,pJugarDados:Dados,pJugarMillonario:QuienQuiereSerMillonario,pJugarRueda:RuedaDeLaFortuna): void {
-
-        let opcion: String= "";
-        while (opcion == "1" || opcion == "2" || opcion == "3" || opcion == "4" || opcion == "5") {
-
+    ingresar(){
+        let readlineSync = require('readline-sync');
+        let ingresar:number = 1;
+        let opcion:number = 1;
+        
+        while (ingresar==1){
+            opcion = parseInt(readlineSync.question("elija el juego que quiere jugar \n 1-QuienQuiereSerMillonario || 2- rueda de la fortuna || 3- Black Jack || 4-Dados \n"));
+            let otraVez:number = 1;
             switch (opcion) {
-                case "1":
-                console.log("El juego elegido es Blackjack");
-                 //pJugarCartas;
+                case 1:
+                    
+                    while(otraVez==1){
+                    console.log(this.tragamonedas1.jugar());
+                    otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
+                    }
                     break;
-                case "2":
-                pJugarDados;
-                    break;
-                case "3":
-                pJugarMillonario;
-                    break;
-                case "4":
-                pJugarRueda;
-                    break;
-                case "5":
-                    console.log("salir");
+                
+                case 2:
+
+                    while(otraVez==1){
+                        console.log(this.tragamonedas2.jugar());
+                        otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
+                        }
+                    
+
                     break;
 
+                 case 3:
+
+                    while(otraVez==1){
+                        // aca va el juego
+                        otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
+                        }
+                    
+
+                    break;
+
+                 case 4:
+
+                    while(otraVez==1){
+                        // aca va el juego
+                        otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
+                        }
+                    
+
+                    break;
+
+                default:
+                    break;
             }
+            
+
+
+
+
+            ingresar = readlineSync.question("Desea salir del casino? 1-NO || 2-SI \n");
         }
     }
+
+
 
 }
-
-
-

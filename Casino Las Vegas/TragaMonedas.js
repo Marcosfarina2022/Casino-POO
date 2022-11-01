@@ -1,24 +1,49 @@
 "use strict";
 exports.__esModule = true;
-exports.TragaMonedas = void 0;
-var TragaMonedas = /** @class */ (function () {
-    function TragaMonedas(pCreditoDisponible) {
-        this.creditoDisponible = pCreditoDisponible;
-        this.pozoAcumulado = 2000000;
+exports.Tragamonedas = void 0;
+var Tragamonedas = /** @class */ (function () {
+    function Tragamonedas() {
     }
-    /*public ingresarApuesta(pApuesta: number): void {
-        if (this.creditoDisponible >= pApuesta) {
-            console.log(this.jugador + " Su apuesta ha sido ingresada su credito es " + this.creditoDisponible);
-        } else {
-            console.log("Saldo insuficiente");
+    Tragamonedas.prototype.getValorApuesta = function () {
+        return this.valorApuesta;
+    };
+    Tragamonedas.prototype.getTematica = function () {
+        return this.tematica;
+    };
+    Tragamonedas.prototype.dado = function () {
+        var dado = Math.random() * ((this.probabilidad + 1) - 1) + 1;
+        return Math.floor(dado);
+    };
+    Tragamonedas.prototype.pantalla = function () {
+        var pantalla = new Array();
+        for (var index = 0; index < 3; index++) {
+            pantalla.push(this.dado());
         }
-    }*/
-    TragaMonedas.prototype.obtenerCreditoDisponible = function () {
-        return this.creditoDisponible;
+        return pantalla;
     };
-    TragaMonedas.prototype.obtenerPozo = function () {
-        return this.pozoAcumulado;
+    Tragamonedas.prototype.gano = function (pantalla) {
+        if ((pantalla[0] == pantalla[1] && pantalla[1] == pantalla[2])) {
+            return true;
+        }
+        else {
+            return false;
+        }
     };
-    return TragaMonedas;
+    Tragamonedas.prototype.jugar = function () {
+        var pantalla = this.pantalla();
+        if (this.gano(pantalla)) {
+            return "\n ================= \n" +
+                " || " + pantalla[0] + " || " + pantalla[1] + " || " + pantalla[2] + " || " + "\n" +
+                " ================= \n" +
+                "Gano $" + (this.valorApuesta * 2);
+        }
+        else {
+            return "\n ================= \n" +
+                " || " + pantalla[0] + " || " + pantalla[1] + " || " + pantalla[2] + " || " + "\n" +
+                " ================= \n" +
+                "Perdio";
+        }
+    };
+    return Tragamonedas;
 }());
-exports.TragaMonedas = TragaMonedas;
+exports.Tragamonedas = Tragamonedas;

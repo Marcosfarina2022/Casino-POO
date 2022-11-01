@@ -15,17 +15,17 @@ var __extends = (this && this.__extends) || (function () {
     };
 })();
 exports.__esModule = true;
-exports.QuienQuiereSerMillonario = void 0;
+exports.RuletaDeLaFortuna = void 0;
 var Tragamonedas_1 = require("./Tragamonedas");
-var QuienQuiereSerMillonario = /** @class */ (function (_super) {
-    __extends(QuienQuiereSerMillonario, _super);
-    function QuienQuiereSerMillonario() {
+var RuletaDeLaFortuna = /** @class */ (function (_super) {
+    __extends(RuletaDeLaFortuna, _super);
+    function RuletaDeLaFortuna() {
         var _this = _super.call(this) || this;
-        _this.valorApuesta = 150;
-        _this.tematica = "Quien Quiere ser millonario";
-        _this.probabilidad = 2;
+        _this.valorApuesta = 300;
+        _this.tematica = "Ruleta de la Fortuna";
+        _this.probabilidad = 3;
         return _this;
     }
-    return QuienQuiereSerMillonario;
+    return RuletaDeLaFortuna;
 }(Tragamonedas_1.Tragamonedas));
-exports.QuienQuiereSerMillonario = QuienQuiereSerMillonario;
+exports.RuletaDeLaFortuna = RuletaDeLaFortuna;

@@ -1,21 +1,22 @@
-import { TragaMonedas } from "./TragaMonedas";
+import { Tragamonedas } from "./Tragamonedas";
+    
 
-export class QuienQuiereSerMillonario extends TragaMonedas {
-    private creditoMinimo: number;
-    private doblarApuesta: number;
-    constructor(pDoblarApuesta: number, pCreditoDisponible: number) {
-        super(pCreditoDisponible);
-        this.creditoMinimo = 2000;
-        this.doblarApuesta = pDoblarApuesta;
+export class QuienQuiereSerMillonario extends Tragamonedas{
+    
+   
+    
+    constructor(){
+        super()
+        this.valorApuesta=150;
+        this.tematica = "Quien Quiere ser millonario";
+        this.probabilidad = 2;
+
     }
 
+   
 
-    public jugar(): void {
-        console.log("Esta jugando");
-    }
-    public calcularGanancia(): void {
-        console.log(this.calcularGanancia());
-    }
+    
+
+
 
 }
- 
