@@ -7,24 +7,24 @@ export class BlackJack {
     constructor() {
         this.carta = [];
         this.resultado = 0;
-        this.apuestaInicial = 3000; 
+        this.apuestaInicial = 3000;
     }
-        public obtenerApuestaInicial():number{
-            return this.apuestaInicial;
-        }
+    public obtenerApuestaInicial(): number {
+        return this.apuestaInicial;
+    }
     private repartir(): number {
         return Math.floor(Math.random() * 11 - 1) + 1;
     }
     public jugar(): void {
         let opcion = require('readline-sync');
-        let repartir: number = 0;
-        let pedirOtraCarta: number = 0;
+        let ingresar: number = 1;
+        let pedirOtraCarta: number = 2;
         let salir: number = 0;
         let blackJack: number = 21;
         let as: number = 1;
         let asVariante: number = 11;
-        if (repartir === 1) {
-            repartir = Number(opcion.question('Presione 1 para comenzar y repartir ' + '\n' + '0 para salir' + '\n'));
+        while (ingresar === 1) {
+            ingresar = Number(opcion.question('Presione 1 para comenzar y repartir ' + '\n' + '0 para salir' + '\n'));
             for (let i: number = 0; i < 2; i++) {
                 if (this.resultado < blackJack) {
                     this.repartir();
@@ -34,11 +34,13 @@ export class BlackJack {
                 }
             }
             console.log('Total de la mano ' + this.resultado);
-            pedirOtraCarta = Number(opcion.question('¿Desea pedir otra carta? Presione 2' + '\n' + 'Si desea salir oprima 0' + '\n'));
-            if (pedirOtraCarta === 2) {
+            while (pedirOtraCarta === 2) {
+                this.repartir();
+                this.carta.push(this.repartir());
+                pedirOtraCarta = Number(opcion.question('¿Desea pedir otra carta? Presione 2' + '\n' + 'Si desea salir oprima 0' + '\n'));
                 for (let i: number = 0; i < 1; i++) {
                     if (blackJack < this.resultado) {
-                        salir = Number(opcion.question('Uste perdió, desea seguir jugando? presione 1'+'\n'+this.resultado));
+                        salir = Number(opcion.question('Uste perdió, desea seguir jugando? presione 1' + '\n' + this.resultado));
                     } else if (opcion === 1) {
                         this.resultado -= as;
                         console.log('Se ha restado 1 por su elecion de AS' + '\n' + this.resultado);
@@ -57,3 +59,9 @@ export class BlackJack {
 
     }
 }
+
+
+
+
+
+
