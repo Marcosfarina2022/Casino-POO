@@ -5,14 +5,37 @@ var QuienQuiereSerMillonario_1 = require("./QuienQuiereSerMillonario");
 var ruletaDeLaFortuna_1 = require("./ruletaDeLaFortuna");
 var BlackJack_1 = require("./BlackJack");
 var Dados_1 = require("./Dados");
+var fs = require('fs');
 var Casino = /** @class */ (function () {
     function Casino() {
         this.tragamonedas1 = new QuienQuiereSerMillonario_1.QuienQuiereSerMillonario();
         this.tragamonedas2 = new ruletaDeLaFortuna_1.RuletaDeLaFortuna();
         this.blackJack = new BlackJack_1.BlackJack();
         this.dados = new Dados_1.Dados(1);
+        this.texto();
     }
+    Casino.prototype.texto = function () {
+        this.crearArchivo("Casino.txt", "holaaaaaaaaaaaaaa");
+        this.leerArchivo("casinoPrueba.txt");
+    };
+    Casino.prototype.crearArchivo = function (nombre, texto) {
+        fs.writeFile(nombre, texto, function (error) {
+            if (error)
+                console.log("ERROR");
+            else
+                console.log("El archivo fue creado");
+        });
+    };
+    Casino.prototype.leerArchivo = function (path) {
+        fs.readFile(path, function (error, texto) {
+            if (error)
+                console.log("ERROR");
+            else
+                console.log(texto.toString());
+        });
+    };
     Casino.prototype.ingresar = function () {
+        this.texto();
         var readlineSync = require('readline-sync');
         var ingresar = 1;
         var opcion = 1;
@@ -40,6 +63,9 @@ var Casino = /** @class */ (function () {
                     break;
                 case 4:
                     while (otraVez == 1) {
+                        var textoDados = "Bienvenido, usted eligió el juego de Dados";
+                        this.dados.crearArchivo("dados.txt", textoDados);
+                        this.dados.leerArchivo("dados.txt");
                         this.dados.jugarDados();
                         otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
                     }

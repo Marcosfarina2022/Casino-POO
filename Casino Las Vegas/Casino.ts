@@ -2,6 +2,9 @@ import { QuienQuiereSerMillonario } from "./QuienQuiereSerMillonario";
 import { RuletaDeLaFortuna } from "./ruletaDeLaFortuna";
 import { BlackJack } from "./BlackJack";
 import { Dados } from "./Dados";
+import * as RLS from "readline-sync";
+
+var fs = require('fs');
 
 export class Casino{
     private tragamonedas1:QuienQuiereSerMillonario;
@@ -16,11 +19,44 @@ export class Casino{
         this.tragamonedas2 = new RuletaDeLaFortuna();
         this.blackJack = new BlackJack();
         this.dados = new Dados(1);
+        this.texto();
+        
+
 
         
     }
 
+
+    public texto():void{
+        
+        this.crearArchivo("Casino.txt","holaaaaaaaaaaaaaa");
+        this.leerArchivo("casinoPrueba.txt");
+    }
+
+    public crearArchivo(nombre:string,texto:string){
+        fs.writeFile(nombre,texto,error =>{
+        
+            if (error)
+                console.log("ERROR");
+             else
+                console.log("El archivo fue creado");
+                
+            })
+    }
+    public leerArchivo(path:string):void{
+        fs.readFile( path, (error,texto) =>{
+            if (error)
+                console.log("ERROR");
+             else
+                console.log(texto.toString());
+                
+            })
+    }
+
+
     ingresar(){
+
+        this.texto();
         let readlineSync = require('readline-sync');
         let ingresar:number = 1;
         let opcion:number = 1;
@@ -60,6 +96,9 @@ export class Casino{
                  case 4:
 
                     while(otraVez==1){
+                        let textoDados:string="Bienvenido, usted eligió el juego de Dados"
+                            this.dados.crearArchivo("dados.txt",textoDados);
+                            this.dados.leerArchivo("dados.txt");
                         this.dados.jugarDados();
                         otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
                         }
