@@ -26,7 +26,7 @@ export class Dados {
     }
 
     public jugarDados():void{
-        let apuesta:number = RLS.question("--------Ingrese su apuesta------- \n"); 
+        let apuesta:number = parseInt(RLS.question("--------Ingrese su apuesta------- \n")); 
         if (apuesta>5000) {
         let lanzar1:string = RLS.question("----Ingrese una opción: --- 1 - Lanzar---- ||--- 2 - Desistir lanzamiento----- \n");  
             switch (lanzar1) {

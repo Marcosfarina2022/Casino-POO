@@ -1,13 +1,22 @@
 import { QuienQuiereSerMillonario } from "./QuienQuiereSerMillonario";
 import { RuletaDeLaFortuna } from "./ruletaDeLaFortuna";
+import { BlackJack } from "./BlackJack";
+import { Dados } from "./Dados";
 
 export class Casino{
     private tragamonedas1:QuienQuiereSerMillonario;
-    private tragamonedas2:RuletaDeLaFortuna
+    private tragamonedas2:RuletaDeLaFortuna;
+    private blackJack:BlackJack;
+    private dados:Dados;
+
+    
 
     constructor(){
         this.tragamonedas1 = new QuienQuiereSerMillonario();
         this.tragamonedas2 = new RuletaDeLaFortuna();
+        this.blackJack = new BlackJack();
+        this.dados = new Dados(1);
+
         
     }
 
@@ -41,7 +50,7 @@ export class Casino{
                  case 3:
 
                     while(otraVez==1){
-                        // aca va el juego
+                        this.blackJack.jugar();
                         otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
                         }
                     
@@ -51,7 +60,7 @@ export class Casino{
                  case 4:
 
                     while(otraVez==1){
-                        // aca va el juego
+                        this.dados.jugarDados();
                         otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
                         }
                     
