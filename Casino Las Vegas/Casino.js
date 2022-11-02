@@ -13,28 +13,7 @@ var Casino = /** @class */ (function () {
         this.blackJack = new BlackJack_1.BlackJack();
         this.dados = new Dados_1.Dados(1);
     }
-    Casino.prototype.texto = function () {
-        this.crearArchivo("Casino.txt", "UTF-8");
-        this.leerArchivo("casinoPrueba.txt");
-    };
-    Casino.prototype.crearArchivo = function (nombre, texto) {
-        fs.writeFile(nombre, texto, function (error) {
-            if (error)
-                console.log("ERROR");
-            else
-                console.log("El archivo fue creado");
-        });
-    };
-    Casino.prototype.leerArchivo = function (path) {
-        fs.readFile(path, function (error, texto) {
-            if (error)
-                console.log("ERROR");
-            else
-                console.log(texto.toString());
-        });
-    };
     Casino.prototype.ingresar = function () {
-        this.texto();
         var readlineSync = require('readline-sync');
         var ingresar = 1;
         var opcion = 1;
