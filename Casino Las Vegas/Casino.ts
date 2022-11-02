@@ -19,7 +19,7 @@ export class Casino{
         this.tragamonedas2 = new RuletaDeLaFortuna();
         this.blackJack = new BlackJack();
         this.dados = new Dados(1);
-        this.texto();
+       
         
 
 
@@ -29,7 +29,7 @@ export class Casino{
 
     public texto():void{
         
-        this.crearArchivo("Casino.txt","holaaaaaaaaaaaaaa");
+        this.crearArchivo("Casino.txt","UTF-8");
         this.leerArchivo("casinoPrueba.txt");
     }
 
@@ -99,7 +99,7 @@ export class Casino{
                         let textoDados:string="Bienvenido, usted eligió el juego de Dados"
                             this.dados.crearArchivo("dados.txt",textoDados);
                             this.dados.leerArchivo("dados.txt");
-                        this.dados.jugarDados();
+                            this.dados.jugarDados();
                         otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
                         }
                     

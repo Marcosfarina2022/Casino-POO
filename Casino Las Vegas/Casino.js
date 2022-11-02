@@ -12,10 +12,9 @@ var Casino = /** @class */ (function () {
         this.tragamonedas2 = new ruletaDeLaFortuna_1.RuletaDeLaFortuna();
         this.blackJack = new BlackJack_1.BlackJack();
         this.dados = new Dados_1.Dados(1);
-        this.texto();
     }
     Casino.prototype.texto = function () {
-        this.crearArchivo("Casino.txt", "holaaaaaaaaaaaaaa");
+        this.crearArchivo("Casino.txt", "UTF-8");
         this.leerArchivo("casinoPrueba.txt");
     };
     Casino.prototype.crearArchivo = function (nombre, texto) {
