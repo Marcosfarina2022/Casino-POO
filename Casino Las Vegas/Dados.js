@@ -38,29 +38,13 @@ var Dados = /** @class */ (function () {
                     }
                     break;
                 case "2":
-                    console.log("***!!! Muchas Gracias !!!*** por elegir Casino Las Vegas");
+                    console.log("**** !!! Gracias por Elegir jugar a los Dados!!!!!! *******");
                     break;
             }
         }
         else {
             console.log("Su apuesta es insuficiente");
         }
-    };
-    Dados.prototype.crearArchivo = function (nombre, textoDados) {
-        fs.writeFile(nombre, textoDados, function (error) {
-            if (error)
-                console.log("ERROR");
-            else
-                console.log("El archivo fue creado");
-        });
-    };
-    Dados.prototype.leerArchivo = function (path) {
-        fs.readFile(path, function (error, textoDados) {
-            if (error)
-                console.log("ERROR");
-            else
-                console.log(textoDados.toString());
-        });
     };
     return Dados;
 }());

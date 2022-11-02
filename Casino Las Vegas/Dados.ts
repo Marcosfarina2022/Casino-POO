@@ -44,7 +44,7 @@ export class Dados {
                 }
                 break;    
                 case "2":
-                console.log("***!!! Muchas Gracias !!!*** por elegir Casino Las Vegas");
+                console.log("**** !!! Gracias por Elegir jugar a los Dados!!!!!! *******");
                 break;
              }
         }else{
@@ -53,24 +53,5 @@ export class Dados {
             }           
           
         }
-
-        public crearArchivo(nombre:string,textoDados:string){
-            fs.writeFile( nombre, textoDados, error =>{
-                if (error)
-                    console.log("ERROR");
-                 else
-                    console.log("El archivo fue creado");
-                    
-                })
-        }
-        public leerArchivo(path:string):void{
-            fs.readFile( path, (error,textoDados) =>{
-                if (error)
-                    console.log("ERROR");
-                 else
-                    console.log(textoDados.toString());
-                    
-                })
-
-    }
+      
 }

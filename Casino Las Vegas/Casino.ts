@@ -63,10 +63,8 @@ export class Casino{
                  case 4:
 
                     while(otraVez==1){
-                        let textoDados:string="Bienvenido, usted eligió el juego de Dados"
-                            this.dados.crearArchivo("dados.txt",textoDados);
-                            this.dados.leerArchivo("dados.txt");
-                            this.dados.jugarDados();
+                        
+                        this.dados.jugarDados();
                         otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
                         }
                     

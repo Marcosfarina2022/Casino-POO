@@ -41,9 +41,6 @@ var Casino = /** @class */ (function () {
                     break;
                 case 4:
                     while (otraVez == 1) {
-                        var textoDados = "Bienvenido, usted eligió el juego de Dados";
-                        this.dados.crearArchivo("dados.txt", textoDados);
-                        this.dados.leerArchivo("dados.txt");
                         this.dados.jugarDados();
                         otraVez = parseInt(readlineSync.question("Jugar Otra Vez? 1-SI || 2-NO \n"));
                     }
