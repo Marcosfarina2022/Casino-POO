@@ -17,6 +17,7 @@ export class BlackJack {
     private repartir(): number {
         return Math.floor(Math.random() * 11 - 1) + 1;
     }
+
     private primeraMano(): void {
         let opcion = require('readline-sync');
         let ingresar: number = 1;
@@ -27,41 +28,49 @@ export class BlackJack {
                     this.repartir();
                     this.carta.push(this.repartir());
                     this.resultado += this.carta[i];
-                    console.log('Primera mano ' + this.carta[i]);
                 }
+                console.log('Primera mano ' + this.carta[i]);
             }
             console.log('Total de la mano ' + this.resultado);
-            this.segundaMano();
-
-        }
-
-    }
-
-    public segundaMano(): void {
-        //let opcion1:number=1;
-        let pedirOtraCarta: number = 2;
-        let as: number = 1;
-        let asVariante: number = 11;
-        let pedirCarta: string = RLS.question("----Ingrese una opción: --- 1 - pedir otra carta---- ||--- 2 - salir del juego----- \n");
-        switch (pedirCarta) {
-            case "1":
-                if (this.resultado < this.blackJack) {
+            let pedirOtraCarta: number = 2;
+            let as: number = 1;
+            let asVariante: number = 11;
+            let pedirCarta: string = RLS.question('----Ingrese una opcion: ' + '\n' + '1- pedir otra carta---- ' + '\n' + '2- salir del juego----' + '\n');
+            let opcion1: string = RLS.question('Ha sacado un AS ' + '\n' + 'tiene 2 alternativas:' + '\n' + 'Si oprime 1 se restara 1 del total en su mano' + '\n' + 'Si oprime 2 se sumaran 11 al total en su mano' + '\n');
+            switch (pedirCarta) {
+                case "1":
                     for (let i: number = 0; i < 1; i++) {
-                        this.resultado = this.carta[i];
+                        if (this.carta[i] === as) {
+                            opcion1 === '1';
+                            this.resultado -= as;
+                            console.log('Se resto 1 del total de su mano' + '\n' + 'Resultado: ' + this.resultado);
+                        } else {
+                            opcion1 === '2';
+                            this.resultado += asVariante;
+                            console.log('Se sumo 11 del total de su mano' + '\n' + 'Resultado: ' + this.resultado)
+                        }
+                        if (this.resultado === this.blackJack) {
+                            console.log('***FELICITACIONES' + '\n' + 'Saco un black Jack');
+                        } else if (this.blackJack < this.resultado) {
+                            console.log('Usted perdio');
+                        }
+
                     }
-                    console.log("gracias por la carta")
+                    this.resultado === 0;
 
-                }/* else if (this.carta === as) {
-                }*/
 
-                break;
 
-            case "2":
-                console.log("salir");
-                break;
+                    break;
+
+                case "2":
+                    console.log("salir");
+                    break;
+            }
+
         }
 
     }
+
 
     public jugar(): void {
 
