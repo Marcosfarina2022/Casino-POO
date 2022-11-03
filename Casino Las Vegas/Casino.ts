@@ -18,7 +18,7 @@ export class Casino{
         this.tragamonedas1 = new QuienQuiereSerMillonario();
         this.tragamonedas2 = new RuletaDeLaFortuna();
         this.blackJack = new BlackJack();
-        this.dados = new Dados(1);
+        this.dados = new Dados(1, 500000);
       
     }
 

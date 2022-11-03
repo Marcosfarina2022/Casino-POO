@@ -4,11 +4,11 @@ exports.Dados = void 0;
 var RLS = require("readline-sync");
 var fs = require('fs');
 var Dados = /** @class */ (function () {
-    function Dados(pDado1) {
+    function Dados(pDado1, apuestaI) {
         this.dado = pDado1;
         this.resultado1 = 0;
         this.resultado2 = 0;
-        this.apuestaInicial = 10000;
+        this.apuestaInicial = apuestaI;
     }
     Dados.prototype.lanzarDados = function () {
         this.dado = Math.floor((Math.random()) * (6 - 1 + 1) + 1);
@@ -21,7 +21,7 @@ var Dados = /** @class */ (function () {
     };
     Dados.prototype.jugarDados = function () {
         var apuesta = parseInt(RLS.question("--------Ingrese su apuesta------- \n"));
-        if (apuesta > 5000) {
+        if (apuesta >= 10000) {
             var lanzar1 = RLS.question("----Ingrese una opción: --- 1 - Lanzar---- ||--- 2 - Desistir lanzamiento----- \n");
             switch (lanzar1) {
                 case "1":
@@ -38,12 +38,21 @@ var Dados = /** @class */ (function () {
                     }
                     break;
                 case "2":
-                    console.log("**** !!! Gracias por Elegir jugar a los Dados!!!!!! *******");
+                    console.log("**** !!! Gracias por elegir jugar a los Dados!!!!!! *******");
                     break;
             }
         }
         else {
             console.log("Su apuesta es insuficiente");
+            var apuestaNueva = RLS.question("--------¿Desea ingresar otra apuesta?------- 1-Si || 2-No ---\n");
+            switch (apuestaNueva) {
+                case "1":
+                    this.jugarDados();
+                    break;
+                case "2":
+                    console.log("Salió del juego");
+                    break;
+            }
         }
     };
     return Dados;

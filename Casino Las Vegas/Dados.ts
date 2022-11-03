@@ -7,11 +7,11 @@ export class Dados {
     protected resultado1:number;
     protected resultado2:number;
     protected apuestaInicial:number;
-    constructor(pDado1:number) {
+    constructor(pDado1:number, apuestaI:number) {
         this.dado=pDado1;
         this.resultado1=0;
         this.resultado2=0;
-        this.apuestaInicial=10000;
+        this.apuestaInicial=apuestaI;
     }
 
     private lanzarDados(): number{
@@ -27,7 +27,7 @@ export class Dados {
 
     public jugarDados():void{
         let apuesta:number = parseInt(RLS.question("--------Ingrese su apuesta------- \n")); 
-        if (apuesta>5000) {
+        if (apuesta>=10000) {
         let lanzar1:string = RLS.question("----Ingrese una opción: --- 1 - Lanzar---- ||--- 2 - Desistir lanzamiento----- \n");  
             switch (lanzar1) {
                 case "1":
@@ -44,11 +44,23 @@ export class Dados {
                 }
                 break;    
                 case "2":
-                console.log("**** !!! Gracias por Elegir jugar a los Dados!!!!!! *******");
+                console.log("**** !!! Gracias por elegir jugar a los Dados!!!!!! *******");
                 break;
              }
         }else{
             console.log("Su apuesta es insuficiente");
+            let apuestaNueva:string = RLS.question("--------¿Desea ingresar otra apuesta?------- 1-Si || 2-No ---\n");
+            switch (apuestaNueva) {
+                case "1":
+                    this.jugarDados();   
+                    break;
+            
+                case "2":
+                    console.log("Salió del juego");
+                    break;
+            } 
+            
+
         
             }           
           

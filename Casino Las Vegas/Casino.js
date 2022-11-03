@@ -11,7 +11,7 @@ var Casino = /** @class */ (function () {
         this.tragamonedas1 = new QuienQuiereSerMillonario_1.QuienQuiereSerMillonario();
         this.tragamonedas2 = new ruletaDeLaFortuna_1.RuletaDeLaFortuna();
         this.blackJack = new BlackJack_1.BlackJack();
-        this.dados = new Dados_1.Dados(1);
+        this.dados = new Dados_1.Dados(1, 500000);
     }
     Casino.prototype.ingresar = function () {
         var readlineSync = require('readline-sync');
