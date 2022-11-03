@@ -18,10 +18,6 @@ var BlackJack = /** @class */ (function () {
     BlackJack.prototype.primeraMano = function () {
         var opcion = require('readline-sync');
         var ingresar = 1;
-        var pedirOtraCarta = 2;
-        var salir = 0;
-        var as = 1;
-        var asVariante = 11;
         if (ingresar === 1) {
             ingresar = Number(opcion.question('Presione 1 para comenzar y repartir ' + '\n'));
             for (var i = 0; i < 2; i++) {
@@ -29,32 +25,47 @@ var BlackJack = /** @class */ (function () {
                     this.repartir();
                     this.carta.push(this.repartir());
                     this.resultado += this.carta[i];
-                    console.log('Primera mano ' + this.carta[i]);
                 }
+                console.log('Primera mano ' + this.carta[i]);
             }
             console.log('Total de la mano ' + this.resultado);
+            var pedirOtraCarta = 2;
+            var as = 1;
+            var asVariante = 11;
+            var pedirCarta = RLS.question('----Ingrese una opcion: ' + '\n' + '1- pedir otra carta---- ' + '\n' + '2- salir del juego----' + '\n');
+            var opcion1 = RLS.question('Ha sacado un AS ' + '\n' + 'tiene 2 alternativas:' + '\n' + 'Si oprime 1 se restara 1 del total en su mano' + '\n' + 'Si oprime 2 se sumaran 11 al total en su mano' + '\n');
+            switch (pedirCarta) {
+                case "1":
+                    for (var i = 0; i < 1; i++) {
+                        if (this.carta[i] === as) {
+                            opcion1 === '1';
+                            this.resultado -= as;
+                            console.log('Se resto 1 del total de su mano' + '\n' + 'Resultado: ' + this.resultado);
+                        }
+                        else {
+                            opcion1 === '2';
+                            this.resultado += asVariante;
+                            console.log('Se sumo 11 del total de su mano' + '\n' + 'Resultado: ' + this.resultado);
+                        }
+                        if (this.resultado === this.blackJack) {
+                            console.log('***FELICITACIONES' + '\n' + 'Saco un black Jack');
+                        }
+                        else if (this.blackJack < this.resultado) {
+                            console.log('Usted perdio');
+                        }
+                        this.resultado = 0;
+                    }
+                    break;
+                case "2":
+                    console.log("salir");
+                    break;
+            }
         }
     };
     BlackJack.prototype.segundaMano = function () {
-        //let opcion1:number=1;
-        var pedirCarta = RLS.question("----Ingrese una opción: --- 1 - pedir otra carta---- ||--- 2 - salir del juego----- \n");
-        switch (pedirCarta) {
-            case "1":
-                if (this.resultado < this.blackJack) {
-                    console.log("gracias por la carta");
-                }
-                else {
-                    console.log("la carta es mayor a 21");
-                }
-                break;
-            case "2":
-                console.log("salir");
-                break;
-        }
     };
     BlackJack.prototype.jugar = function () {
         this.primeraMano();
-        this.segundaMano();
     };
     return BlackJack;
 }());
