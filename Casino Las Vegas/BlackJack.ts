@@ -51,8 +51,8 @@ export class BlackJack {
                     }
                     console.log("gracias por la carta")
 
-                } else if (this.carta === as) {
-                }
+                }/* else if (this.carta === as) {
+                }*/
 
                 break;
 

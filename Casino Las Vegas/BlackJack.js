@@ -18,10 +18,6 @@ var BlackJack = /** @class */ (function () {
     BlackJack.prototype.primeraMano = function () {
         var opcion = require('readline-sync');
         var ingresar = 1;
-        var pedirOtraCarta = 2;
-        var salir = 0;
-        var as = 1;
-        var asVariante = 11;
         if (ingresar === 1) {
             ingresar = Number(opcion.question('Presione 1 para comenzar y repartir ' + '\n'));
             for (var i = 0; i < 2; i++) {
@@ -33,19 +29,24 @@ var BlackJack = /** @class */ (function () {
                 }
             }
             console.log('Total de la mano ' + this.resultado);
+            this.segundaMano();
         }
     };
     BlackJack.prototype.segundaMano = function () {
         //let opcion1:number=1;
+        var pedirOtraCarta = 2;
+        var as = 1;
+        var asVariante = 11;
         var pedirCarta = RLS.question("----Ingrese una opción: --- 1 - pedir otra carta---- ||--- 2 - salir del juego----- \n");
         switch (pedirCarta) {
             case "1":
                 if (this.resultado < this.blackJack) {
+                    for (var i = 0; i < 1; i++) {
+                        this.resultado = this.carta[i];
+                    }
                     console.log("gracias por la carta");
-                }
-                else {
-                    console.log("la carta es mayor a 21");
-                }
+                } /* else if (this.carta === as) {
+                }*/
                 break;
             case "2":
                 console.log("salir");
@@ -54,7 +55,6 @@ var BlackJack = /** @class */ (function () {
     };
     BlackJack.prototype.jugar = function () {
         this.primeraMano();
-        this.segundaMano();
     };
     return BlackJack;
 }());
