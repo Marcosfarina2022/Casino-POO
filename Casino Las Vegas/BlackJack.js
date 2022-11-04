@@ -17,6 +17,7 @@ var BlackJack = /** @class */ (function () {
     BlackJack.prototype.primeraMano = function () {
         var opcion = require('readline-sync');
         var ingresar = 1;
+        var salir = 0;
         var as = 1;
         var asVariante = 11;
         ingresar = Number(opcion.question('Presione 1 para comenzar y repartir ' + '\n'));
@@ -30,18 +31,19 @@ var BlackJack = /** @class */ (function () {
                 console.log('Primera mano ' + this.carta[i]);
             }
             console.log('Total de la mano ' + this.resultado);
-            var pedirCarta = Number(opcion.question('----Ingrese una opcion: ' + '\n' + '1- pedir otra carta---- ' + '\n' + '2- salir del juego----' + '\n'));
+            var pedirCarta = Number(opcion.question('----Si el valor es menor a 21 podra seguir pidiendo una carta: ' + '\n' + '1- pedir otra carta---- ' + '\n'));
             switch (pedirCarta) {
                 case 1:
-                    this.repartir();
+                    // this.repartir();
                     for (var i = 0; i < 1; i++) {
-                        this.carta.push(this.repartir());
-                        console.log('su carta es ' + this.carta[i] + '\n');
+                        var nuevaCarta = this.repartir();
+                        this.carta.push(nuevaCarta);
+                        console.log('su carta es ' + nuevaCarta + '\n');
                         if (this.resultado <= this.blackJack) {
-                            this.resultado += this.carta[i];
+                            this.resultado += nuevaCarta;
                             console.log("El resultado total es", this.resultado);
                         }
-                        else if (this.carta[i] === as) {
+                        else if (nuevaCarta === as) {
                             var opcion1 = Number(opcion.question('tiene 2 alternativas:' + '\n' + 'Si oprime 1 se restara 1 del total en su mano' + '\n' + 'Si oprime 2 se sumaran 11 al total en su mano' + '\n'));
                             switch (opcion1) {
                                 case 1:
@@ -64,7 +66,10 @@ var BlackJack = /** @class */ (function () {
                         break;
                     }
                 case 2:
-                    console.log("salir");
+                    salir = Number(opcion.question('Presione 0 para salir del juego' + '\n'));
+                    if (salir === 0) {
+                        console.log('Gracias por jugar en nuestro juego');
+                    }
                     break;
             }
         }
