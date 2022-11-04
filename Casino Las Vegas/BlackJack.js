@@ -4,7 +4,7 @@ exports.BlackJack = void 0;
 var BlackJack = /** @class */ (function () {
     function BlackJack() {
         this.carta = [];
-        this.apuestaInicial = 3000;
+        this.apuestaInicial = 1500;
         this.blackJack = 21;
     }
     BlackJack.prototype.obtenerApuestaInicial = function () {
@@ -30,37 +30,39 @@ var BlackJack = /** @class */ (function () {
     };
     BlackJack.prototype.primeraMano = function () {
         var opcion = require('readline-sync');
-        var salir = 0;
         var as = -1;
         var asVariante = 11;
         this.carta = this.repartir();
-        console.log('Primera mano ' + this.carta + '\n' + 'Su total es ' + this.obtenerResultado() + '\n');
+        console.log('°°°° Su mano °°°°' + '\n' + '#  ' + this.carta + '\n' + '=-=-= Resultado =-=-=' + '\n' + '#  ' + this.obtenerResultado() + '\n');
         var pedirCarta = 1;
         var cartaNueva;
         var aux = 0;
         while (this.obtenerResultado() < this.blackJack && pedirCarta == 1) {
             cartaNueva = this.nuevaCarta();
-            console.log('su carta es ' + cartaNueva + '\n');
+            console.log('=-=-= Su carta es =-=-=' + '\n' + '# ' + cartaNueva + '\n');
             if (cartaNueva === 1) {
-                aux = Number(opcion.question('Saco un AS, puede elegir si desea sumar o restar del total de su mano || oprimar 1 para sumar 11 || oprimar 2 para restar 1' + '\n'));
+                console.log('*=*=*=* Saco un AS ' + cartaNueva + ' *=*=*=* ' + '\n' + '*=*=*=* Puede elegir 2 opciones *=*=*=*' + '\n');
+                console.log('Opción 1 se restara 1 del total de su mano' + '\n' + 'Opción 2 se sumaran 11 al total de su mano');
+                aux = Number(opcion.question('Restar ===> 1' + '\n' + 'Sumar ===> 2' + '\n'));
                 if (aux === 1) {
-                    cartaNueva = asVariante;
+                    cartaNueva = as;
                 }
                 else {
-                    cartaNueva = as;
+                    cartaNueva = asVariante;
                 }
             }
             this.carta.push(cartaNueva);
-            console.log(this.obtenerResultado());
+            console.log('=-=-= Resultado =-=-=' + '\n' + '# ' + this.obtenerResultado() + '\n');
             if (this.obtenerResultado() < this.blackJack) {
-                pedirCarta = Number(opcion.question('Quiere una carta nueva presione 1 = si || 2 = no' + '\n'));
+                var crupier = 'Crupier';
+                pedirCarta = Number(opcion.question('- ' + crupier + '\n' + 'Desea una nueva carta?' + '\n' + 'Nueva Carta ===> 1' + '\n' + 'Pararse ===> 2' + '\n'));
             }
         }
         if (this.obtenerResultado() === this.blackJack) {
-            console.log('***FELICITACIONES' + '\n' + 'Saco un black Jack');
+            console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
         }
         else if (this.blackJack < this.obtenerResultado()) {
-            console.log('Usted perdio, supero 21');
+            console.log('!=!=! Usted perdio, supero ' + ' # ' + this.blackJack + ' +!=!=!' + '\n');
         }
     };
     BlackJack.prototype.jugar = function () {
