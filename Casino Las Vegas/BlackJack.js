@@ -62,7 +62,7 @@ var BlackJack = /** @class */ (function () {
             console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
         }
         else if (this.blackJack < this.obtenerResultado()) {
-            console.log('!=!=! Usted perdio, supero ' + ' # ' + this.blackJack + ' +!=!=!' + '\n');
+            console.log('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' +!=!=!' + '\n');
         }
     };
     BlackJack.prototype.jugar = function () {
