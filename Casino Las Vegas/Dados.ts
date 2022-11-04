@@ -58,6 +58,7 @@ export class Dados {
                 case "2":
                     console.log("Salió del juego");
                     break;
+                    
             } 
             
 
