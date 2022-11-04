@@ -6,30 +6,28 @@ var BlackJack = /** @class */ (function () {
         this.carta = [];
         this.apuestaMinima = 1500;
         this.blackJack = 21;
+        this.probabilidad = 64 / 1326;
     }
-    BlackJack.prototype.obtenerApuestaMinima = function () {
-        return this.apuestaMinima;
-    };
     BlackJack.prototype.ingresarApuesta = function () {
-        var ingresoApuesta = require('readline-sync');
-        console.log('La puesta miníma para este juego es' + '\n' + '# ' + this.obtenerApuestaMinima() + '\n');
+        var opcionApuesta = require('readline-sync');
         var nuevaApuesta = 0;
-        nuevaApuesta = Number(ingresoApuesta.question('Ingresar apuesta ===> ' + '\n'));
-        switch (nuevaApuesta) {
+        console.log('La apuesta miníma para este juego es' + '\n' + '$' + this.obtenerApuestaMinima() + ' ' + 'Pesos' + '\n');
+        var ingresoDeApuesta = Number(opcionApuesta.question('Desea ingresar apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
+        switch (ingresoDeApuesta) {
             case 1:
-                if (nuevaApuesta >= this.apuestaMinima) {
+                nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
+                if (nuevaApuesta >= this.obtenerApuestaMinima()) {
                     console.log('Apuesta ingresada $ ' + nuevaApuesta + '\n');
                 }
                 break;
             case 2:
-                if (nuevaApuesta < this.apuestaMinima) {
-                    console.log('La apuesta minima es $ ' + this.apuestaMinima + '\n');
-                }
-                break;
-            default:
+                console.log("Salió del juego");
                 break;
         }
         return nuevaApuesta;
+    };
+    BlackJack.prototype.obtenerApuestaMinima = function () {
+        return this.apuestaMinima;
     };
     BlackJack.prototype.repartir = function () {
         var cartas = new Array;
@@ -50,8 +48,8 @@ var BlackJack = /** @class */ (function () {
         return contador;
     };
     BlackJack.prototype.primeraMano = function () {
-        while (this.ingresarApuesta() >= this.obtenerApuestaMinima()) {
-            var opcion = require('readline-sync');
+        var opcion = require('readline-sync');
+        if (this.ingresarApuesta() >= this.obtenerApuestaMinima()) {
             var as = -1;
             var asVariante = 11;
             this.carta = this.repartir();
@@ -79,17 +77,21 @@ var BlackJack = /** @class */ (function () {
                     var crupier = 'Crupier';
                     pedirCarta = Number(opcion.question('- ' + crupier + '\n' + 'Desea una nueva carta?' + '\n' + 'Nueva Carta ===> 1' + '\n' + 'Pararse ===> 2' + '\n'));
                 }
+                if (this.obtenerResultado() === this.blackJack) {
+                    console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
+                }
+                else if (this.blackJack < this.obtenerResultado()) {
+                    console.log('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' !=!=!' + '\n');
+                }
             }
-            if (this.obtenerResultado() === this.blackJack) {
-                console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
-            }
-            else if (this.blackJack < this.obtenerResultado()) {
-                console.log('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' +!=!=!' + '\n');
-            }
+        }
+        else {
+            console.log('La apuesta minima es $ ' + this.apuestaMinima + ' Intente nuevamente' + '\n');
+            var apuestaNueva = 0;
+            apuestaNueva = Number(opcion.question('Ingresar apuesta ===> ' + '\n'));
         }
     };
     BlackJack.prototype.jugar = function () {
-        this.ingresarApuesta();
         this.primeraMano();
     };
     return BlackJack;
