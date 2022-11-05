@@ -14,27 +14,22 @@ var BlackJack = /** @class */ (function () {
         var ingresoDeApuesta = Number(opcionApuesta.question('Desea ingresar apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
         switch (ingresoDeApuesta) {
             case 1:
-                while (ingresoDeApuesta === 1) {
-                    nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
-                    if (nuevaApuesta >= this.obtenerApuestaMinima()) {
-                        console.log('Apuesta ingresada $ ' + nuevaApuesta + '\n');
-                    }
-                    else {
-                        console.log('Apuesta insuficiente' + '\n');
-                        var preguntarOtraVez = Number(opcionApuesta.question('Desea realizar una nueva apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
-                        switch (preguntarOtraVez) {
-                            case 1:
-                                nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
-                                this.ingresarApuesta();
-                                break;
-                            case 2:
-                                console.log('Gracias por elegir Black Jack, va a salir del juego.');
-                                break;
-                        }
-                    }
+                nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
+                if (nuevaApuesta >= this.apuestaMinima) {
+                    this.primeraMano();
                 }
+                else {
+                    console.log('Apuesta insuficiente' + '\n');
+                    /*let preguntarOtraVez = Number(opcionApuesta.question('Desea realizar una nueva apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
+                    if (preguntarOtraVez==1) {
+                        nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));*/
+                    this.ingresarApuesta();
+                }
+            case 2:
+                console.log('Gracias por elegir Black Jack, va a salir del juego.');
+                break;
         }
-        return nuevaApuesta;
+        //return nuevaApuesta;
     };
     BlackJack.prototype.obtenerApuestaMinima = function () {
         return this.apuestaMinima;
@@ -58,7 +53,6 @@ var BlackJack = /** @class */ (function () {
         return contador;
     };
     BlackJack.prototype.primeraMano = function () {
-        this.ingresarApuesta();
         var opcion = require('readline-sync');
         var as = -1;
         var asVariante = 11;
@@ -96,7 +90,7 @@ var BlackJack = /** @class */ (function () {
         }
     };
     BlackJack.prototype.jugar = function () {
-        this.primeraMano();
+        this.ingresarApuesta();
     };
     return BlackJack;
 }());

@@ -66,5 +66,8 @@ export class Dados {
             }           
           
         }
+        public calcularProbabilidad(){
+            
+        }
       
 }

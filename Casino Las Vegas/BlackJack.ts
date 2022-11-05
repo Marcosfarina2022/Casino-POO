@@ -10,39 +10,35 @@ export class BlackJack {
         this.blackJack = 21;
     }
 
-    public ingresarApuesta(): number {
+    public ingresarApuesta(): void {
         let opcionApuesta = require('readline-sync');
         let nuevaApuesta: number = 0;
         console.log('La apuesta miníma para este juego es' + '\n' + '$' + this.obtenerApuestaMinima() + ' ' + 'Pesos' + '\n');
         let ingresoDeApuesta = Number(opcionApuesta.question('Desea ingresar apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
         switch (ingresoDeApuesta) {
-            case 1:
-                while (ingresoDeApuesta === 1) {
-                    nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
-                    if (nuevaApuesta >= this.obtenerApuestaMinima()) {
-                        console.log('Apuesta ingresada $ ' + nuevaApuesta + '\n');
+            case 1:  
+                    nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));             
+                    if (nuevaApuesta >= this.apuestaMinima) {                 
+                        this.primeraMano();
                     } else{
                         console.log('Apuesta insuficiente' + '\n');
-                        let preguntarOtraVez = Number(opcionApuesta.question('Desea realizar una nueva apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
-                        switch (preguntarOtraVez) {
-                            case 1:
-                                nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
-                                this.ingresarApuesta();
-                                break;
+                        /*let preguntarOtraVez = Number(opcionApuesta.question('Desea realizar una nueva apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
+                        if (preguntarOtraVez==1) {
+                            nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));*/
+                            this.ingresarApuesta();   
+                        }                            
 
-                            case 2:
-                                console.log('Gracias por elegir Black Jack, va a salir del juego.');
-                                break;
-                        }
+            case 2:
+                    console.log('Gracias por elegir Black Jack, va a salir del juego.');
+                        break;
+                        
                     }
 
-
-                }
+                    //return nuevaApuesta;
+    
+                
         }
-        return nuevaApuesta;
-
-
-    }
+    
 
     private obtenerApuestaMinima(): number {
         return this.apuestaMinima;
@@ -67,7 +63,6 @@ export class BlackJack {
         return contador;
     }
     private primeraMano(): void {
-        this.ingresarApuesta();
         let opcion = require('readline-sync');
         let as: number = -1;
         let asVariante: number = 11;
@@ -107,7 +102,7 @@ export class BlackJack {
         }
     }
     public jugar(): void {
-        this.primeraMano();
+        this.ingresarApuesta();
     }
 
 }

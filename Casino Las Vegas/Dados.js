@@ -55,6 +55,8 @@ var Dados = /** @class */ (function () {
             }
         }
     };
+    Dados.prototype.calcularProbabilidad = function () {
+    };
     return Dados;
 }());
 exports.Dados = Dados;
