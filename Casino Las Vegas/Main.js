@@ -10,7 +10,7 @@ figlet(' Gracias!!! \n\n Casino Las Vegas!!', function (err, data) {
     }
     console.log(data);
 });
-console.log("***************************** !!!!BIENVENIDOS AL CASINO LAS VEGAS!!!! ****************************");
-console.log(require('yeoman-character'));
 var casino = new casino_1.Casino();
+var nuevotexto = new casino_1.Casino();
+console.log(nuevotexto.leerArchivo('Casino.txt'));
 casino.ingresar();

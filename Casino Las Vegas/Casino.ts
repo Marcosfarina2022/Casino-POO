@@ -3,7 +3,6 @@ import { RuletaDeLaFortuna } from "./ruletaDeLaFortuna";
 import { BlackJack } from "./BlackJack";
 import { Dados } from "./Dados";
 import * as RLS from "readline-sync";
-
 var fs = require('fs');
 
 export class Casino{

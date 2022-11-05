@@ -13,6 +13,23 @@ var Casino = /** @class */ (function () {
         this.blackJack = new BlackJack_1.BlackJack();
         this.dados = new Dados_1.Dados(1, 500000);
     }
+    Casino.prototype.manipular = function (nombre, texto) {
+        fs.writeFile(nombre, texto, function (error) {
+            if (error) {
+                console.log('ERROR');
+            }
+            else {
+                console.log('SE CREO EL ARCHIVO');
+            }
+        });
+    };
+    Casino.prototype.modificarArchivo = function (nombre, texto) {
+        this.manipular(nombre, texto);
+    };
+    Casino.prototype.leerArchivo = function (path) {
+        var txtFile = fs.readFileSync(path, 'utf-8');
+        return txtFile;
+    };
     Casino.prototype.ingresar = function () {
         var readlineSync = require('readline-sync');
         var ingresar = 1;

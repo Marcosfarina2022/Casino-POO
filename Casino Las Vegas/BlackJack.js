@@ -20,16 +20,12 @@ var BlackJack = /** @class */ (function () {
                 }
                 else {
                     console.log('Apuesta insuficiente' + '\n');
-                    /*let preguntarOtraVez = Number(opcionApuesta.question('Desea realizar una nueva apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
-                    if (preguntarOtraVez==1) {
-                        nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));*/
                     this.ingresarApuesta();
                 }
             case 2:
                 console.log('Gracias por elegir Black Jack, va a salir del juego.');
                 break;
         }
-        //return nuevaApuesta;
     };
     BlackJack.prototype.obtenerApuestaMinima = function () {
         return this.apuestaMinima;
