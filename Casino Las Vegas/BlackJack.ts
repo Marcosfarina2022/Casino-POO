@@ -4,12 +4,10 @@ export class BlackJack {
     protected carta: number[];
     protected apuestaMinima: number;
     protected blackJack: number;
-    protected probabilidad: number;
     constructor() {
         this.carta = [];
         this.apuestaMinima = 1500;
         this.blackJack = 21;
-        this.probabilidad = 64 / 1326;
     }
 
     public ingresarApuesta(): number {
@@ -19,24 +17,32 @@ export class BlackJack {
         let ingresoDeApuesta = Number(opcionApuesta.question('Desea ingresar apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
         switch (ingresoDeApuesta) {
             case 1:
-                nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
-                if (nuevaApuesta >= this.obtenerApuestaMinima()) {
-                    console.log('Apuesta ingresada $ ' + nuevaApuesta + '\n');
+                while (ingresoDeApuesta === 1) {
+                    nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
+                    if (nuevaApuesta >= this.obtenerApuestaMinima()) {
+                        console.log('Apuesta ingresada $ ' + nuevaApuesta + '\n');
+                    } else{
+                        console.log('Apuesta insuficiente' + '\n');
+                        let preguntarOtraVez = Number(opcionApuesta.question('Desea realizar una nueva apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
+                        switch (preguntarOtraVez) {
+                            case 1:
+                                nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
+                                this.ingresarApuesta();
+                                break;
+
+                            case 2:
+                                console.log('Gracias por elegir Black Jack, va a salir del juego.');
+                                break;
+                        }
+                    }
+
+
                 }
-
-
-                break;
-
-            case 2:
-                console.log("Salió del juego");
-                break;
-
         }
         return nuevaApuesta;
+
+
     }
-
-
-
 
     private obtenerApuestaMinima(): number {
         return this.apuestaMinima;
@@ -61,52 +67,46 @@ export class BlackJack {
         return contador;
     }
     private primeraMano(): void {
+        this.ingresarApuesta();
         let opcion = require('readline-sync');
-        if (this.ingresarApuesta() >= this.obtenerApuestaMinima()) {
-            let as: number = -1;
-            let asVariante: number = 11;
-            this.carta = this.repartir();
-            console.log('°°°° Su mano °°°°' + '\n' + '#  ' + this.carta + '\n' + '=-=-= Resultado =-=-=' + '\n' + '#  ' + this.obtenerResultado() + '\n');
-            let pedirCarta: number = 1;
-            let cartaNueva: number;
-            let aux: number = 0;
-            while (this.obtenerResultado() < this.blackJack && pedirCarta == 1) {
-                cartaNueva = this.nuevaCarta();
-                console.log('=-=-= Su carta es =-=-=' + '\n' + '# ' + cartaNueva + '\n');
-                if (cartaNueva === 1) {
-                    console.log('*=*=*=* Saco un AS ' + cartaNueva + ' *=*=*=* ' + '\n' + '*=*=*=* Puede elegir 2 opciones *=*=*=*' + '\n');
-                    console.log('Opción 1 se restara 1 del total de su mano' + '\n' + 'Opción 2 se sumaran 11 al total de su mano');
-                    aux = Number(opcion.question('Restar ===> 1' + '\n' + 'Sumar ===> 2' + '\n'));
-                    if (aux === 1) {
-                        cartaNueva = as;
-                    } else {
-                        cartaNueva = asVariante;
-                    }
+        let as: number = -1;
+        let asVariante: number = 11;
+        this.carta = this.repartir();
+        console.log('°°°° Su mano °°°°' + '\n' + '#  ' + this.carta + '\n' + '=-=-= Resultado =-=-=' + '\n' + '#  ' + this.obtenerResultado() + '\n');
+        let pedirCarta: number = 1;
+        let cartaNueva: number;
+        let aux: number = 0;
+        while (this.obtenerResultado() < this.blackJack && pedirCarta == 1) {
+            cartaNueva = this.nuevaCarta();
+            console.log('=-=-= Su carta es =-=-=' + '\n' + '# ' + cartaNueva + '\n');
+            if (cartaNueva === 1) {
+                console.log('*=*=*=* Saco un AS ' + cartaNueva + ' *=*=*=* ' + '\n' + '*=*=*=* Puede elegir 2 opciones *=*=*=*' + '\n');
+                console.log('Opción 1 se restara 1 del total de su mano' + '\n' + 'Opción 2 se sumaran 11 al total de su mano');
+                aux = Number(opcion.question('Restar ===> 1' + '\n' + 'Sumar ===> 2' + '\n'));
+                if (aux === 1) {
+                    cartaNueva = as;
+                } else {
+                    cartaNueva = asVariante;
                 }
-                this.carta.push(cartaNueva);
-                console.log('=-=-= Resultado =-=-=' + '\n' + '# ' + this.obtenerResultado() + '\n');
-                if (this.obtenerResultado() < this.blackJack) {
-                    let crupier: string = 'Crupier';
-                    pedirCarta = Number(opcion.question('- ' + crupier + '\n' + 'Desea una nueva carta?' + '\n' + 'Nueva Carta ===> 1' + '\n' + 'Pararse ===> 2' + '\n'));
-                }
-
-                if (this.obtenerResultado() === this.blackJack) {
-                    console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
-                } else if (this.blackJack < this.obtenerResultado()) {
-                    console.log('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' !=!=!' + '\n');
-                }
-
             }
-        } else {
-            console.log('La apuesta minima es $ ' + this.apuestaMinima + ' Intente nuevamente' + '\n');
-            let apuestaNueva: number = 0;
-            apuestaNueva = Number(opcion.question('Ingresar apuesta ===> ' + '\n'));
+            this.carta.push(cartaNueva);
+            console.log('=-=-= Resultado =-=-=' + '\n' + '# ' + this.obtenerResultado() + '\n');
+            if (this.obtenerResultado() < this.blackJack) {
+                let crupier: string = 'Crupier';
+                pedirCarta = Number(opcion.question('- ' + crupier + '\n' + 'Desea una nueva carta?' + '\n' + 'Nueva Carta ===> 1' + '\n' + 'Pararse ===> 2' + '\n'));
+            }
+
+            if (this.obtenerResultado() === this.blackJack) {
+                console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
+            } else if (this.blackJack < this.obtenerResultado()) {
+                console.log('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' !=!=!' + '\n');
+            }
+
+
 
         }
     }
-
     public jugar(): void {
-
         this.primeraMano();
     }
 
