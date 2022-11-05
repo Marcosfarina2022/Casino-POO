@@ -21,8 +21,23 @@ export class Casino{
         this.dados = new Dados(1, 500000);
       
     }
-
-    ingresar(){
+    public manipular(nombre:string,texto:string):void{
+        fs.writeFile(nombre,texto, error =>{
+            if (error){
+                console.log('ERROR');
+            }else{
+                console.log('SE CREO EL ARCHIVO');
+            }
+        });
+    }
+    public modificarArchivo(nombre:string, texto:string):void{
+        this.manipular(nombre,texto);
+    }
+    public leerArchivo(path:string):string{
+        let txtFile:string = fs.readFileSync(path,'utf-8');
+        return txtFile;
+    }
+   public ingresar(){
 
         let readlineSync = require('readline-sync');
         let ingresar:number = 1;
