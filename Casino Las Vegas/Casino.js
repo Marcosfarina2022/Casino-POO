@@ -6,6 +6,8 @@ var ruletaDeLaFortuna_1 = require("./ruletaDeLaFortuna");
 var BlackJack_1 = require("./BlackJack");
 var Dados_1 = require("./Dados");
 var fs = require('fs');
+var colors = require('colors/safe');
+var colores = require('colors');
 var Casino = /** @class */ (function () {
     function Casino() {
         this.tragamonedas1 = new QuienQuiereSerMillonario_1.QuienQuiereSerMillonario();
@@ -35,7 +37,8 @@ var Casino = /** @class */ (function () {
         var ingresar = 1;
         var opcion = 1;
         while (ingresar == 1) {
-            opcion = parseInt(readlineSync.question(" **** Elija el juego que quiere jugar **** \n 1-QuienQuiereSerMillonario || 2- rueda de la fortuna || 3- Black Jack || 4-Dados \n"));
+            console.log(colors.magenta(' **** Elija el juego que quiere jugar **** ' + '\n' + '\n'));
+            opcion = parseInt(readlineSync.question(colores.yellow('1- QuienQuiereSerMillonario' + '\n' + '2- Rueda de la fortuna' + '\n' + '3- Black Jack' + '\n' + '4- Dados' + '\n')));
             var otraVez = 1;
             switch (opcion) {
                 case 1:

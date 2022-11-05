@@ -4,7 +4,8 @@ import { BlackJack } from "./BlackJack";
 import { Dados } from "./Dados";
 import * as RLS from "readline-sync";
 var fs = require('fs');
-
+var colors = require('colors/safe');
+var colores = require('colors');
 export class Casino{
     private tragamonedas1:QuienQuiereSerMillonario;
     private tragamonedas2:RuletaDeLaFortuna;
@@ -38,12 +39,14 @@ export class Casino{
     }
    public ingresar(){
 
-        let readlineSync = require('readline-sync');
+    let readlineSync = require('readline-sync');
         let ingresar:number = 1;
         let opcion:number = 1;
         
         while (ingresar==1){
-            opcion = parseInt(readlineSync.question(" **** Elija el juego que quiere jugar **** \n 1-QuienQuiereSerMillonario || 2- rueda de la fortuna || 3- Black Jack || 4-Dados \n"));
+            console.log(colors.magenta(' **** Elija el juego que quiere jugar **** '+'\n'+'\n'));
+
+            opcion = parseInt(readlineSync.question(colores.yellow('1- QuienQuiereSerMillonario'+'\n'+'2- Rueda de la fortuna'+'\n'+'3- Black Jack'+'\n'+'4- Dados'+'\n')));
             let otraVez:number = 1;
             switch (opcion) {
                 case 1:
