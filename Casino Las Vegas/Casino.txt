@@ -1,3 +1,6 @@
+                    
+                    
+                    
                      =*=*= Le damos la Bienvenida a Casino Las Vegas =*=*=
 
                                       _-----_
@@ -19,22 +22,19 @@ Algunos de ellos son:
 
 
 1. Tragamonedas:
-
     Las máquinas tragamonedas son máquinas de juegos de azar donde se apuesta cierta 
 cantidad de dinero para ganar un premio en efectivo.
     
-    Estas maquinas pueden ser de DOS tipos:
+    Estas maquinas pueden ser de 2 tipos:
     * Programadas.
     * Azar.
 
 2. Blackjack: 
-
     El objetivo de este juego es conseguir una puntuación superior a la del o la croupier 
 sin exceder de 21 puntos, donde las personas participantes juegan contra el casino. 
 Se denomina Black Jack al obtener los 21 puntos con las primeras cartas.
 
 4. Dados: 
-
     El Craps es un juego de dados, en el que los jugadores apuesta a un resultado 
 o resultados posibles tras el lanzamiento de un par de dados
 
