@@ -16,29 +16,21 @@ export class BlackJack {
         console.log('La apuesta miníma para este juego es' + '\n' + '$' + this.obtenerApuestaMinima() + ' ' + 'Pesos' + '\n');
         let ingresoDeApuesta = Number(opcionApuesta.question('Desea ingresar apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
         switch (ingresoDeApuesta) {
-            case 1:  
-                    nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));             
-                    if (nuevaApuesta >= this.apuestaMinima) {                 
-                        this.primeraMano();
-                    } else{
-                        console.log('Apuesta insuficiente' + '\n');
-                        /*let preguntarOtraVez = Number(opcionApuesta.question('Desea realizar una nueva apuesta?  SI ==> 1  ||  NO ==> 2  ' + '\n'));
-                        if (preguntarOtraVez==1) {
-                            nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));*/
-                            this.ingresarApuesta();   
-                        }                            
+            case 1:
+                nuevaApuesta = Number(opcionApuesta.question('Ingresar apuesta ===> ' + '\n'));
+                if (nuevaApuesta >= this.apuestaMinima) {
+                    this.primeraMano();
+                } else {
+                    console.log('Apuesta insuficiente' + '\n');
+                    this.ingresarApuesta();
+                }
 
             case 2:
-                    console.log('Gracias por elegir Black Jack, va a salir del juego.');
-                        break;
-                        
-                    }
-
-                    //return nuevaApuesta;
-    
-                
+                console.log('Gracias por elegir Black Jack, va a salir del juego.');
+                break;
         }
-    
+    }
+
 
     private obtenerApuestaMinima(): number {
         return this.apuestaMinima;
