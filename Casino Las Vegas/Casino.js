@@ -42,35 +42,35 @@ var Casino = /** @class */ (function () {
             var otraVez = 1;
             switch (opcion) {
                 case 1:
-                    console.log(colores.brightGreen.bold.italic("su probabilidad de Ganar es: %" + colores.yellow.bold(this.tragamonedas1.getProbabilidad()) + " por Tiro"));
+                    console.log(colores.brightBlue.bold.italic("su probabilidad de Ganar es: %") + colores.yellow.bold(this.tragamonedas1.getProbabilidad()) + colores.brightGreen.bold.italic(" por Tiro"));
                     while (otraVez == 1) {
                         console.log(this.tragamonedas1.jugar());
-                        otraVez = parseInt(readlineSync.question(colores.brightGreen.italic(" ¿Desea jugar Otra Vez?" + "SI ===> " + colores.yellow.italic.bold("1" + '\n' + "NO ===> " + "2") + "\n")));
+                        otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez?") + '\n' + colores.brightBlue.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightBlue.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n"));
                     }
                     break;
                 case 2:
-                    console.log(colores.brightGreen.bold.italic("su probabilidad de Ganar es: %" + colores.yellow.bold(this.tragamonedas2.getProbabilidad()) + " por Tiro"));
+                    console.log(colores.brightBlue.bold.italic("su probabilidad de Ganar es: %") + colores.yellow.bold(this.tragamonedas2.getProbabilidad()) + colores.brightGreen.bold.italic(" por Tiro"));
                     while (otraVez == 1) {
                         console.log(this.tragamonedas2.jugar());
-                        otraVez = parseInt(readlineSync.question(colores.brightGreen.italic(" ¿Desea jugar Otra Vez?" + "SI ===> " + colores.yellow.italic.bold("1" + '\n' + "NO ===> " + "2") + "\n")));
+                        otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez?") + '\n' + colores.brightBlue.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightBlue.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n"));
                     }
                     break;
                 case 3:
                     while (otraVez == 1) {
                         this.blackJack.jugar();
-                        otraVez = parseInt(readlineSync.question(colores.brightGreen.italic(" ¿Desea jugar Otra Vez?" + '\n' + "SI ===> " + colores.yellow.italic.bold("1" + '\n' + "NO ===> ") + "2") + "\n"));
+                        otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez?") + '\n' + colores.brightBlue.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightBlue.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n"));
                     }
                     break;
                 case 4:
                     while (otraVez == 1) {
                         this.dados.jugarDados();
-                        otraVez = parseInt(readlineSync.question(" ¿Desea jugar Otra Vez?" + '\n' + "SI ===> " + colores.yellow.italic.bold("1" + '\n' + "NO ===> ") + "2") + "\n");
+                        otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez?") + '\n' + colores.brightBlue.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightBlue.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n"));
                     }
                     break;
                 default:
                     break;
             }
-            ingresar = readlineSync.question(colores.brightRed.bold.italic("Desea salir del casino?" + '\n' + "SI ===> " + colores.yellow.italic.bold("1" + '\n' + "NO ===> " + "2") + "\n"));
+            ingresar = readlineSync.question(colores.brightRed.italic("Desea salir del casino?") + '\n' + colores.brightBlue.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightBlue.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n");
         }
     };
     return Casino;
