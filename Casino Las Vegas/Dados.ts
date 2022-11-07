@@ -53,13 +53,13 @@ export class Dados {
                 this.resultado2= this.lanzarJugada();
                 console.log(colores.brightGreen.italic("El resultado del segundo lanzamiento fue de "),colores.brightYellow.bold(this.resultado2));
                 if (this.resultado1== this.resultado2) {
-                    this.partidasGanadas +=1;
                     this.apuestaInicial= this.apuestaInicial*2; 
                     console.log(colores.brightGreen.italic.bold("Felicitaciones!!!**** Ganó el premio Mayor ****** de $")+colores.brightYellow.italic.bold(this.apuestaInicial)); 
-                    
+                    this.partidasGanadas +=1;
                 } else {
-                    this.partidasPerdidas+=1;
+                    
                     console.log(colores.red.italic.bold("******** Perdió el Juego ******"));
+                    this.partidasPerdidas +=1;
                 }
                 break;    
                 case "2":

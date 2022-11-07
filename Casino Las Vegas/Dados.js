@@ -10,7 +10,14 @@ var Dados = /** @class */ (function () {
         this.resultado1 = 0;
         this.resultado2 = 0;
         this.apuestaInicial = apuestaI;
+        this.partidasGanadas = 0;
+        this.partidasPerdidas = 0;
+        this.partidasJugadas = 0;
+        this.estadistica = "no Jugo";
     }
+    Dados.prototype.sumarEstadistica = function () {
+        this.estadistica = "\n jugo: " + this.partidasJugadas + "\n Gano: " + this.partidasGanadas + "\n Perdio: " + this.partidasPerdidas;
+    };
     Dados.prototype.lanzarDados = function () {
         this.dado = Math.floor((Math.random()) * (6 - 1 + 1) + 1);
         return this.dado;
@@ -21,6 +28,7 @@ var Dados = /** @class */ (function () {
         return resultado;
     };
     Dados.prototype.jugarDados = function () {
+        this.partidasJugadas += 1;
         var apuesta = parseInt(RLS.question(colores.brightGreen.italic("--------Ingrese su apuesta------- \n")));
         if (apuesta >= 10000) {
             var lanzar1 = RLS.question(colores.brightGreen.italic('----Ingrese una opcion') + '\n' + colores.brightGreen.italic('Lanzar ===> ') + colores.brightYellow('1') + '\n' + colores.brightGreen.italic('Desistir lanzamiento ===> ') + colores.brightYellow('2') + '\n');
@@ -33,9 +41,11 @@ var Dados = /** @class */ (function () {
                     if (this.resultado1 == this.resultado2) {
                         this.apuestaInicial = this.apuestaInicial * 2;
                         console.log(colores.brightGreen.italic.bold("Felicitaciones!!!**** Ganó el premio Mayor ****** de $") + colores.brightYellow.italic.bold(this.apuestaInicial));
+                        this.partidasGanadas += 1;
                     }
                     else {
                         console.log(colores.red.italic.bold("******** Perdió el Juego ******"));
+                        this.partidasPerdidas += 1;
                     }
                     break;
                 case "2":

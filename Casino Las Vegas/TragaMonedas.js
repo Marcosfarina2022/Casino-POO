@@ -7,7 +7,6 @@ var colores = require('colors');
 var Tragamonedas = /** @class */ (function () {
     function Tragamonedas() {
         this.columnas = 3;
-        this.estadistica = "no Jugo";
     }
     Tragamonedas.prototype.setProbabilidad = function () {
         this.probabilidad = (this.valoresGanadores / this.valoresPosibles) * 100;
