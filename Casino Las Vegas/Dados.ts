@@ -29,16 +29,16 @@ export class Dados {
     public jugarDados():void{
         let apuesta:number = parseInt(RLS.question(colores.brightGreen.italic("--------Ingrese su apuesta------- \n"))); 
         if (apuesta>=10000) {
-        let lanzar1:string = RLS.question(colores.brightGreen.italic('----Ingrese una opcion'+'\n' +'Lanzar ===> '+ colores.brightYellow('1')+'\n'+'Desistir lanzamiento ===>'+ colores.brightYellow('2') +'\n'));  
+        let lanzar1:string = RLS.question(colores.brightGreen.italic('----Ingrese una opcion')+'\n' +colores.brightGreen.italic('Lanzar ===> ')+ colores.brightYellow('1')+'\n'+colores.brightGreen.italic('Desistir lanzamiento ===> ')+ colores.brightYellow('2') +'\n');  
             switch (lanzar1) {
                 case "1":
                 this.resultado1= this.lanzarJugada();
-                console.log(colores.brightGreen.italic("El resultado del primer lanzamiento fue de"),colores.brightYellow.bold(this.resultado1));
+                console.log(colores.brightGreen.italic("El resultado del primer lanzamiento fue de "),colores.brightYellow.bold(this.resultado1));
                 this.resultado2= this.lanzarJugada();
-                console.log(colores.brightGreen.italic("El resultado del segundo lanzamiento fue de"),colores.brightYellow.bold(this.resultado2));
+                console.log(colores.brightGreen.italic("El resultado del segundo lanzamiento fue de "),colores.brightYellow.bold(this.resultado2));
                 if (this.resultado1== this.resultado2) {
                     this.apuestaInicial= this.apuestaInicial*2; 
-                    console.log(colores.brightYellow.italic.bold("Felicitaciones!!!**** Ganó el premio Mayor ****** de $"),colores.brightGreen.italic.bold(this.apuestaInicial)); 
+                    console.log(colores.brightGreen.italic.bold("Felicitaciones!!!**** Ganó el premio Mayor ****** de $")+colores.brightYellow.italic.bold(this.apuestaInicial)); 
                     
                 } else {
                     console.log(colores.red.italic.bold("******** Perdió el Juego ******"));
@@ -50,7 +50,7 @@ export class Dados {
              }
         }else{
             console.log(colores.red.italic.bold("Su apuesta es insuficiente"));
-            let apuestaNueva:string = RLS.question(colores.brightBlue.italic("-------- Desea ingresar otra apuesta?")+colores.green.italic("SI")+ colores.brightYellow.italic.bold("1")+"\n"+("NO")+ colores.brightYellow.italic.bold("1")+"\n");
+            let apuestaNueva:string = RLS.question(colores.brightBlue.italic("-------- Desea ingresar otra apuesta?")+'\n'+colores.green.italic("SI ===> ")+ colores.brightYellow.italic.bold("1")+"\n"+colores.green.italic("NO ===> " )+ colores.brightYellow.italic.bold("2")+"\n");
             switch (apuestaNueva) {
                 case "1":
                     this.jugarDados();   
