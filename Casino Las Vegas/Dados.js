@@ -3,6 +3,7 @@ exports.__esModule = true;
 exports.Dados = void 0;
 var RLS = require("readline-sync");
 var fs = require('fs');
+var colores = require('colors');
 var Dados = /** @class */ (function () {
     function Dados(pDado1, apuestaI) {
         this.dado = pDado1;
@@ -20,37 +21,37 @@ var Dados = /** @class */ (function () {
         return resultado;
     };
     Dados.prototype.jugarDados = function () {
-        var apuesta = parseInt(RLS.question("--------Ingrese su apuesta------- \n"));
+        var apuesta = parseInt(RLS.question(colores.brightGreen.italic("--------Ingrese su apuesta------- \n")));
         if (apuesta >= 10000) {
-            var lanzar1 = RLS.question("----Ingrese una opción: --- 1 - Lanzar---- ||--- 2 - Desistir lanzamiento----- \n");
+            var lanzar1 = RLS.question(colores.brightGreen.italic('----Ingrese una opcion' + '\n' + 'Lanzar ===> ' + colores.brightYellow('1') + '\n' + 'Desistir lanzamiento ===>' + colores.brightYellow('2') + '\n'));
             switch (lanzar1) {
                 case "1":
                     this.resultado1 = this.lanzarJugada();
-                    console.log("El resultado del primer lanzamiento fue de", this.resultado1);
+                    console.log(colores.brightGreen.italic("El resultado del primer lanzamiento fue de"), colores.brightYellow.bold(this.resultado1));
                     this.resultado2 = this.lanzarJugada();
-                    console.log("El resultado del segundo lanzamiento fue de", this.resultado2);
+                    console.log(colores.brightGreen.italic("El resultado del segundo lanzamiento fue de"), colores.brightYellow.bold(this.resultado2));
                     if (this.resultado1 == this.resultado2) {
                         this.apuestaInicial = this.apuestaInicial * 2;
-                        console.log("Felicitaciones!!!**** Ganó el premio Mayor ****** de $", this.apuestaInicial);
+                        console.log(colores.brightYellow.italic.bold("Felicitaciones!!!**** Ganó el premio Mayor ****** de $"), colores.brightGreen.italic.bold(this.apuestaInicial));
                     }
                     else {
-                        console.log("******** Perdió el Juego ******");
+                        console.log(colores.red.italic.bold("******** Perdió el Juego ******"));
                     }
                     break;
                 case "2":
-                    console.log("**** !!! Gracias por elegir jugar a los Dados!!!!!! *******");
+                    console.log(colores.black.bold.italic("**** !!! Gracias por elegir jugar a los Dados!!!!!! *******"));
                     break;
             }
         }
         else {
-            console.log("Su apuesta es insuficiente");
-            var apuestaNueva = RLS.question("--------¿Desea ingresar otra apuesta?------- 1-Si || 2-No ---\n");
+            console.log(colores.red.italic.bold("Su apuesta es insuficiente"));
+            var apuestaNueva = RLS.question(colores.brightBlue.italic("-------- Desea ingresar otra apuesta?") + colores.green.italic("SI") + colores.brightYellow.italic.bold("1") + "\n" + ("NO") + colores.brightYellow.italic.bold("1") + "\n");
             switch (apuestaNueva) {
                 case "1":
                     this.jugarDados();
                     break;
                 case "2":
-                    console.log("Salió del juego");
+                    console.log(colores.blue.italic.bold("Salió del juego"));
                     break;
             }
         }
