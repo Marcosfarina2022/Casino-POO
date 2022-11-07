@@ -4,10 +4,12 @@ export class BlackJack {
     protected carta: number[];
     protected apuestaMinima: number;
     protected blackJack: number;
+    protected pozoGanador:number;
     constructor() {
         this.carta = [];
         this.apuestaMinima = 1500;
         this.blackJack = 21;
+        this.pozoGanador= 100000;
     }
 
     public ingresarApuesta(): void {
@@ -84,7 +86,7 @@ export class BlackJack {
             }
 
             if (this.obtenerResultado() === this.blackJack) {
-                console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
+                console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=* '+ this.pozoGanador + '\n');
             } else if (this.blackJack < this.obtenerResultado()) {
                 console.log('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' !=!=!' + '\n');
             }

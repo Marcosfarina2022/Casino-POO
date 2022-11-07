@@ -6,6 +6,7 @@ var BlackJack = /** @class */ (function () {
         this.carta = [];
         this.apuestaMinima = 1500;
         this.blackJack = 21;
+        this.pozoGanador = 100000;
     }
     BlackJack.prototype.ingresarApuesta = function () {
         var opcionApuesta = require('readline-sync');
@@ -78,7 +79,7 @@ var BlackJack = /** @class */ (function () {
                 pedirCarta = Number(opcion.question('- ' + crupier + '\n' + 'Desea una nueva carta?' + '\n' + 'Nueva Carta ===> 1' + '\n' + 'Pararse ===> 2' + '\n'));
             }
             if (this.obtenerResultado() === this.blackJack) {
-                console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=*' + '\n');
+                console.log('*=*=*=*FELICITACIONES=*=*=*' + '\n' + '*=*=*=*Saco un black Jack=*=*=* ' + this.pozoGanador + '\n');
             }
             else if (this.blackJack < this.obtenerResultado()) {
                 console.log('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' !=!=!' + '\n');

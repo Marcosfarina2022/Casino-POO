@@ -7,6 +7,7 @@ export class Dados {
     protected resultado1:number;
     protected resultado2:number;
     protected apuestaInicial:number;
+    protected espacioMuestral:number[];
     constructor(pDado1:number, apuestaI:number) {
         this.dado=pDado1;
         this.resultado1=0;
@@ -65,9 +66,6 @@ export class Dados {
         
             }           
           
-        }
-        public calcularProbabilidad(){
-            
         }
       
 }
