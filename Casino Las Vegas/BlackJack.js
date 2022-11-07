@@ -2,6 +2,7 @@
 exports.__esModule = true;
 exports.BlackJack = void 0;
 var colores = require('colors');
+var fs = require('fs');
 var BlackJack = /** @class */ (function () {
     function BlackJack() {
         this.carta = [];
@@ -9,6 +10,23 @@ var BlackJack = /** @class */ (function () {
         this.blackJack = 21;
         this.pozoGanador = 100000;
     }
+    BlackJack.prototype.manipular = function (nombre, texto) {
+        fs.writeFile(nombre, texto, function (error) {
+            if (error) {
+                console.log(colores.red.bold('ERROR'));
+            }
+            else {
+                console.log(colores.green.bold('SE CREO EL ARCHIVO'));
+            }
+        });
+    };
+    BlackJack.prototype.modificarArchivo = function (nombre, texto) {
+        this.manipular(nombre, texto);
+    };
+    BlackJack.prototype.leerArchivo = function (path) {
+        var txtFile = fs.readFileSync(path, 'utf-8');
+        return txtFile;
+    };
     BlackJack.prototype.ingresarApuesta = function () {
         var opcionApuesta = require('readline-sync');
         var nuevaApuesta = 0;
