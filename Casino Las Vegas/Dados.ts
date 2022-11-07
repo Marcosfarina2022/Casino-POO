@@ -8,11 +8,26 @@ export class Dados {
     protected resultado1:number;
     protected resultado2:number;
     protected apuestaInicial:number;
+    public estadistica:string;
+    protected partidasGanadas:number;
+    protected partidasPerdidas:number;
+    protected partidasJugadas: number;
+
+
+
     constructor(pDado1:number, apuestaI:number) {
         this.dado=pDado1;
         this.resultado1=0;
         this.resultado2=0;
         this.apuestaInicial=apuestaI;
+        this.partidasGanadas=0;
+        this.partidasPerdidas=0;
+        this.partidasJugadas=0;
+        this.estadistica = "no Jugo";
+    }
+
+    sumarEstadistica():void{
+        this.estadistica = "\n jugo: "+this.partidasJugadas+"\n Gano: "+this.partidasGanadas+"\n Perdio: "+this.partidasPerdidas;
     }
 
     private lanzarDados(): number{
@@ -27,6 +42,7 @@ export class Dados {
     }
 
     public jugarDados():void{
+        this.partidasJugadas += 1;
         let apuesta:number = parseInt(RLS.question(colores.brightGreen.italic("--------Ingrese su apuesta------- \n"))); 
         if (apuesta>=10000) {
         let lanzar1:string = RLS.question(colores.brightGreen.italic('----Ingrese una opcion')+'\n' +colores.brightGreen.italic('Lanzar ===> ')+ colores.brightYellow('1')+'\n'+colores.brightGreen.italic('Desistir lanzamiento ===> ')+ colores.brightYellow('2') +'\n');  
@@ -37,10 +53,12 @@ export class Dados {
                 this.resultado2= this.lanzarJugada();
                 console.log(colores.brightGreen.italic("El resultado del segundo lanzamiento fue de "),colores.brightYellow.bold(this.resultado2));
                 if (this.resultado1== this.resultado2) {
+                    this.partidasGanadas +=1;
                     this.apuestaInicial= this.apuestaInicial*2; 
                     console.log(colores.brightGreen.italic.bold("Felicitaciones!!!**** Ganó el premio Mayor ****** de $")+colores.brightYellow.italic.bold(this.apuestaInicial)); 
                     
                 } else {
+                    this.partidasPerdidas+=1;
                     console.log(colores.red.italic.bold("******** Perdió el Juego ******"));
                 }
                 break;    

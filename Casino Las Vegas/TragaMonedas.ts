@@ -21,7 +21,7 @@ export class  Tragamonedas{
         
         
         this.columnas = 3;
-        this.estadistica = "no Jugo";
+        
         
        
        
