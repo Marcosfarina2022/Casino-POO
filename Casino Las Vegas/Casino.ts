@@ -24,9 +24,9 @@ export class Casino{
     public manipular(nombre:string,texto:string):void{
         fs.writeFile(nombre,texto, error =>{
             if (error){
-                console.log('ERROR');
+                console.log(colores.red.bold('ERROR'));
             }else{
-                console.log('SE CREO EL ARCHIVO');
+                console.log(colores.green.bold('SE CREO EL ARCHIVO'));
             }
         });
     }
@@ -50,19 +50,19 @@ export class Casino{
             let otraVez:number = 1;
             switch (opcion) {
                 case 1:
-                    console.log("su probabilidad de Ganar es: %"+this.tragamonedas1.getProbabilidad()+" por Tiro");
+                    console.log(colores.brightGreen.bold.italic("su probabilidad de Ganar es: %"+colores.yellow.bold(this.tragamonedas1.getProbabilidad())+" por Tiro"));
                     while(otraVez==1){
                     console.log(this.tragamonedas1.jugar());
-                    otraVez = parseInt(readlineSync.question(" ¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));
+                    otraVez = parseInt(readlineSync.question(colores.brightGreen.italic(" ¿Desea jugar Otra Vez?"+ "SI ===> "+ colores.yellow.italic.bold("1"+'\n'+"NO ===> " +"2") +"\n")));
                     }
                     break;
                 
                 case 2:
                     
-                    console.log("su probabilidad de Ganar es: %"+this.tragamonedas2.getProbabilidad()+" por Tiro");
+                    console.log(colores.brightGreen.bold.italic("su probabilidad de Ganar es: %"+colores.yellow.bold(this.tragamonedas2.getProbabilidad())+" por Tiro"));
                     while(otraVez==1){
                         console.log(this.tragamonedas2.jugar());
-                        otraVez = parseInt(readlineSync.question("¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));
+                        otraVez = parseInt(readlineSync.question(colores.brightGreen.italic(" ¿Desea jugar Otra Vez?"+ "SI ===> "+ colores.yellow.italic.bold("1"+'\n'+"NO ===> " +"2") +"\n")));
                         }
                     
 
@@ -72,7 +72,7 @@ export class Casino{
 
                     while(otraVez==1){
                         this.blackJack.jugar();
-                        otraVez = parseInt(readlineSync.question("¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));
+                        otraVez = parseInt(readlineSync.question(colores.brightGreen.italic(" ¿Desea jugar Otra Vez?"+ '\n'+"SI ===> "+ colores.yellow.italic.bold("1"+'\n'+"NO ===> ") +"2") +"\n"));
                         }
                     
 
@@ -83,7 +83,7 @@ export class Casino{
                     while(otraVez==1){
                         
                         this.dados.jugarDados();
-                        otraVez = parseInt(readlineSync.question(" ¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));
+                        otraVez = parseInt(readlineSync.question(" ¿Desea jugar Otra Vez?"+ '\n'+"SI ===> "+ colores.yellow.italic.bold("1"+'\n'+"NO ===> ") +"2") +"\n");
                         }
                     
 
@@ -97,7 +97,7 @@ export class Casino{
 
 
 
-            ingresar = readlineSync.question("¿Desea salir del casino? 1-NO || 2-SI \n");
+            ingresar = readlineSync.question(colores.brightRed.bold.italic("Desea salir del casino?"+'\n'+ "SI ===> "+ colores.yellow.italic.bold("1"+'\n'+"NO ===> " +"2") +"\n"));
         }
     }
 
