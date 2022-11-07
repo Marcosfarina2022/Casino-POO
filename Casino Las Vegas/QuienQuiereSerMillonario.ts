@@ -26,7 +26,7 @@ export class QuienQuiereSerMillonario extends Tragamonedas{
         this.partidasGanadas=0;
         this.partidasPerdidas=0;
         this.partidasJugadas=0;
-        this.estadistica = "no Jugo";
+        this.estadistica = " no Jugo";
         
         
         

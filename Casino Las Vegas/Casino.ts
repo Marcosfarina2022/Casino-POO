@@ -27,7 +27,7 @@ export class Casino{
 
     setEstadisticasGenerales():void{
 
-        this.estadisticasGenerales =  "Quien quiere ser millonario \n"+this.tragamonedas1.estadistica+ "\n" +"\nRuleta de la Suerte \n"+ this.tragamonedas2.estadistica+ "\n" +"\nDados \n"+ this.dados.estadistica;
+        this.estadisticasGenerales =  "Quien quiere ser millonario \n"+this.tragamonedas1.estadistica+ "\n" +"\nRuleta de la Suerte \n"+ this.tragamonedas2.estadistica+ "\n"+"\nBlackJack \n"+ this.blackJack.estadistica +"\n"+"\nDados \n"+ this.dados.estadistica;
     }
 
     getEstadisticasGenerales():string{
@@ -87,6 +87,7 @@ export class Casino{
                         this.blackJack.jugar();
                         otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez? ")+ '\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("1")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("2") +"\n"));
                         }
+                        this.blackJack.sumarEstadistica();
                     
 
                     break;

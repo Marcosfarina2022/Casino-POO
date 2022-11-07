@@ -23,7 +23,7 @@ export class Dados {
         this.partidasGanadas=0;
         this.partidasPerdidas=0;
         this.partidasJugadas=0;
-        this.estadistica = "no Jugo";
+        this.estadistica = " no Jugo";
     }
 
     sumarEstadistica():void{
@@ -42,9 +42,10 @@ export class Dados {
     }
 
     public jugarDados():void{
-        this.partidasJugadas += 1;
+        
         let apuesta:number = parseInt(RLS.question(colores.brightGreen.italic("--------Ingrese su apuesta------- \n"))); 
         if (apuesta>=10000) {
+            this.partidasJugadas += 1;
         let lanzar1:string = RLS.question(colores.brightGreen.italic('----Ingrese una opcion')+'\n' +colores.brightGreen.italic('Lanzar ===> ')+ colores.brightYellow('1')+'\n'+colores.brightGreen.italic('Desistir lanzamiento ===> ')+ colores.brightYellow('2') +'\n');  
             switch (lanzar1) {
                 case "1":

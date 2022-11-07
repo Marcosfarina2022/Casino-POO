@@ -5,12 +5,26 @@ export class BlackJack {
     protected apuestaMinima: number;
     protected blackJack: number;
     protected pozoGanador: number;
+    public estadistica:string;
+    protected partidasGanadas:number;
+    protected partidasPerdidas:number;
+    protected partidasJugadas: number;
+
     constructor() {
         this.carta = [];
         this.apuestaMinima = 1500;
         this.blackJack = 21;
         this.pozoGanador = 100000;
+        this.partidasGanadas=0;
+        this.partidasPerdidas=0;
+        this.partidasJugadas=0;
+        this.estadistica = " no Jugo";
     }
+
+    sumarEstadistica():void{
+        this.estadistica = "\n jugo: "+this.partidasJugadas+"\n Gano: "+this.partidasGanadas+"\n Perdio: "+this.partidasPerdidas;
+    }
+
     public manipular(nombre: string, texto: string): void {
         fs.writeFile(nombre, texto, error => {
             if (error) {
@@ -77,6 +91,7 @@ export class BlackJack {
         let as: number = -1;
         let asVariante: number = 11;
         this.carta = this.repartir();
+        this.partidasJugadas += 1;
         console.log(colores.blue.italic('°°°° Su mano °°°°') + '\n' + colores.red.bold('#  ' + this.carta) + '\n' + colores.blue.italic('=-=-= Total en mano =-=-=') + '\n' + colores.green.bold('#  ' + this.obtenerResultado()) + '\n');
         let pedirCarta: number = 1;
         let cartaNueva: number;
@@ -103,8 +118,10 @@ export class BlackJack {
 
             if (this.obtenerResultado() === this.blackJack) {
                 console.log(colores.green.bold.italic(('*=*=*=* FELICITACIONES =*=*=* ' + '\n' + ' *=*=*=* Saco un black Jack =*=*=* ' + '\n' + colores.green.bold('Ha ganado el pozo acumulado de $ ' + this.pozoGanador) + '\n')));
+                this.partidasGanadas +=1;
             } else if (this.blackJack < this.obtenerResultado()) {
                 console.log(colores.red.italic('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' !=!=!') + '\n');
+                this.partidasPerdidas+=1;
             }
 
 
@@ -114,6 +131,7 @@ export class BlackJack {
 
     public jugar(): void {
         this.ingresarApuesta();
+        
     }
 
 }

@@ -30,7 +30,7 @@ var RuletaDeLaFortuna = /** @class */ (function (_super) {
         _this.partidasGanadas = 0;
         _this.partidasPerdidas = 0;
         _this.partidasJugadas = 0;
-        _this.estadistica = "no Jugo";
+        _this.estadistica = " no Jugo";
         return _this;
     }
     return RuletaDeLaFortuna;

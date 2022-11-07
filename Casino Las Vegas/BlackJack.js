@@ -9,7 +9,14 @@ var BlackJack = /** @class */ (function () {
         this.apuestaMinima = 1500;
         this.blackJack = 21;
         this.pozoGanador = 100000;
+        this.partidasGanadas = 0;
+        this.partidasPerdidas = 0;
+        this.partidasJugadas = 0;
+        this.estadistica = " no Jugo";
     }
+    BlackJack.prototype.sumarEstadistica = function () {
+        this.estadistica = "\n jugo: " + this.partidasJugadas + "\n Gano: " + this.partidasGanadas + "\n Perdio: " + this.partidasPerdidas;
+    };
     BlackJack.prototype.manipular = function (nombre, texto) {
         fs.writeFile(nombre, texto, function (error) {
             if (error) {
@@ -73,6 +80,7 @@ var BlackJack = /** @class */ (function () {
         var as = -1;
         var asVariante = 11;
         this.carta = this.repartir();
+        this.partidasJugadas += 1;
         console.log(colores.blue.italic('°°°° Su mano °°°°') + '\n' + colores.red.bold('#  ' + this.carta) + '\n' + colores.blue.italic('=-=-= Total en mano =-=-=') + '\n' + colores.green.bold('#  ' + this.obtenerResultado()) + '\n');
         var pedirCarta = 1;
         var cartaNueva;
@@ -99,9 +107,11 @@ var BlackJack = /** @class */ (function () {
             }
             if (this.obtenerResultado() === this.blackJack) {
                 console.log(colores.green.bold.italic(('*=*=*=* FELICITACIONES =*=*=* ' + '\n' + ' *=*=*=* Saco un black Jack =*=*=* ' + '\n' + colores.green.bold('Ha ganado el pozo acumulado de $ ' + this.pozoGanador) + '\n')));
+                this.partidasGanadas += 1;
             }
             else if (this.blackJack < this.obtenerResultado()) {
                 console.log(colores.red.italic('!=!=! Usted perdio, supero ' + '# ' + this.blackJack + ' !=!=!') + '\n');
+                this.partidasPerdidas += 1;
             }
         }
     };
