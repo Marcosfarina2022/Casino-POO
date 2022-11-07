@@ -1,0 +1,8 @@
+Quien quiere ser millonario 
+
+ jugo: 1
+ Gano: 0
+ Perdio: 1
+
+Ruleta de la Suerte 
+no Jugo

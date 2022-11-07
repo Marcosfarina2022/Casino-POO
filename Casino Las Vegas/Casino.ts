@@ -11,6 +11,7 @@ export class Casino{
     private tragamonedas2:RuletaDeLaFortuna;
     private blackJack:BlackJack;
     private dados:Dados;
+    public estadisticasGenerales:string;
 
     
 
@@ -19,14 +20,24 @@ export class Casino{
         this.tragamonedas2 = new RuletaDeLaFortuna();
         this.blackJack = new BlackJack();
         this.dados = new Dados(1, 500000);
+        this.estadisticasGenerales = "";
+
       
     }
+
+    setEstadisticasGenerales():void{
+
+        this.estadisticasGenerales =  "Quien quiere ser millonario \n"+this.tragamonedas1.estadistica+ "\n" +"\nRuleta de la Suerte \n"+ this.tragamonedas2.estadistica;
+    }
+
+    getEstadisticasGenerales():string{
+        return this.estadisticasGenerales;
+    }
+
     public manipular(nombre:string,texto:string):void{
         fs.writeFile(nombre,texto, error =>{
             if (error){
                 console.log(colores.red.bold('ERROR'));
-            }else{
-                console.log(colores.green.bold('SE CREO EL ARCHIVO'));
             }
         });
     }
@@ -39,7 +50,8 @@ export class Casino{
     }
    public ingresar(){
 
-    let readlineSync = require('readline-sync');
+     this.modificarArchivo("EstadisticasCasino.txt","");
+     let readlineSync = require('readline-sync');
         let ingresar:number = 1;
         let opcion:number = 1;
         
@@ -52,9 +64,10 @@ export class Casino{
                 case 1:
                     console.log(colores.brightBlue.bold.italic("su probabilidad de Ganar es: %")+colores.yellow.bold(this.tragamonedas1.getProbabilidad())+colores.brightGreen.bold.italic(" por Tiro"));
                     while(otraVez==1){
-                    console.log(this.tragamonedas1.jugar());
-                    otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez? ")+ '\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("1")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("2") +"\n"));
+                        console.log(this.tragamonedas1.jugar());
+                        otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez? ")+ '\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("1")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("2") +"\n"));
                     }
+                    this.tragamonedas1.sumarEstadistica();
                     break;
                 
                 case 2:
@@ -64,8 +77,8 @@ export class Casino{
                         console.log(this.tragamonedas2.jugar());
                         otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez? ")+ '\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("1")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("2") +"\n"));
                         }
+                        this.tragamonedas2.sumarEstadistica();
                     
-
                     break;
 
                  case 3:
@@ -97,8 +110,10 @@ export class Casino{
 
 
 
-            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ")+'\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("1")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("2") +"\n");
+            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ")+'\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("2")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("1") +"\n");
         }
+        this.setEstadisticasGenerales();
+        this.modificarArchivo("EstadisticasCasino.txt",this.getEstadisticasGenerales());
     }
 
 

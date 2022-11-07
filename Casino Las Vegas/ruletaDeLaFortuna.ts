@@ -9,6 +9,10 @@ export class RuletaDeLaFortuna extends Tragamonedas{
     protected valoresPosibles:number;
     protected columnas:number;
     public pozoAcumulado:number;
+    public estadistica:string;
+    protected partidasGanadas:number;
+    protected partidasPerdidas:number;
+    protected partidasJugadas: number;
 
     constructor(){
         super();
@@ -18,6 +22,10 @@ export class RuletaDeLaFortuna extends Tragamonedas{
         this.setProbabilidad();
         this.pozoAcumulado = 3000;
         this.setValorApuesta(300);
+        this.partidasGanadas=0;
+        this.partidasPerdidas=0;
+        this.partidasJugadas=0;
+        this.estadistica = "no Jugo";
 
         
 

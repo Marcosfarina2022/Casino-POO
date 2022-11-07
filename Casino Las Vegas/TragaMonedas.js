@@ -2,9 +2,12 @@
 exports.__esModule = true;
 exports.Tragamonedas = void 0;
 var readlineSync = require('readline-sync');
+var fs = require('fs');
+var colores = require('colors');
 var Tragamonedas = /** @class */ (function () {
     function Tragamonedas() {
         this.columnas = 3;
+        this.estadistica = "no Jugo";
     }
     Tragamonedas.prototype.setProbabilidad = function () {
         this.probabilidad = (this.valoresGanadores / this.valoresPosibles) * 100;
@@ -49,7 +52,11 @@ var Tragamonedas = /** @class */ (function () {
     Tragamonedas.prototype.reiniciarPozoAcumulado = function () {
         this.pozoAcumulado = this.getValorApuesta() * 10;
     };
+    Tragamonedas.prototype.sumarEstadistica = function () {
+        this.estadistica = "\n jugo: " + this.partidasJugadas + "\n Gano: " + this.partidasGanadas + "\n Perdio: " + this.partidasPerdidas;
+    };
     Tragamonedas.prototype.jugar = function () {
+        this.partidasJugadas += 1;
         console.log("\n\n");
         console.log("Apuesta $" + this.getValorApuesta());
         console.log("POZO ACUMULADO $" + this.pozoAcumulado);
@@ -57,6 +64,7 @@ var Tragamonedas = /** @class */ (function () {
         if (this.gano(pantalla)) {
             var gano = this.pozoAcumulado;
             this.reiniciarPozoAcumulado();
+            this.partidasGanadas += 1;
             return "\n ================= \n" +
                 " || " + pantalla[0] + " || " + pantalla[1] + " || " + pantalla[2] + " || " + "\n" +
                 " ================= \n" +
@@ -65,6 +73,7 @@ var Tragamonedas = /** @class */ (function () {
         }
         else {
             this.aumentarPozoAcumulado();
+            this.partidasPerdidas += 1;
             return "\n ================= \n" +
                 " || " + pantalla[0] + " || " + pantalla[1] + " || " + pantalla[2] + " || " + "\n" +
                 " ================= \n" +

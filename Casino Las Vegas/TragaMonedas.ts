@@ -1,4 +1,6 @@
 let readlineSync = require('readline-sync');
+var fs = require('fs');
+let colores = require ('colors');
 
 export class  Tragamonedas{
     public valorApuesta:number;
@@ -8,6 +10,10 @@ export class  Tragamonedas{
     protected valoresPosibles:number;
     protected columnas:number;
     public pozoAcumulado:number;
+    public estadistica:string;
+    protected partidasGanadas:number;
+    protected partidasPerdidas:number;
+    protected partidasJugadas: number;
     
      
 
@@ -15,7 +21,9 @@ export class  Tragamonedas{
         
         
         this.columnas = 3;
+        this.estadistica = "no Jugo";
         
+       
        
     }
 
@@ -87,7 +95,15 @@ export class  Tragamonedas{
         
     }
 
+    sumarEstadistica():void{
+        this.estadistica = "\n jugo: "+this.partidasJugadas+"\n Gano: "+this.partidasGanadas+"\n Perdio: "+this.partidasPerdidas;
+    }
+
+    
+    
+    
     jugar():string{
+        this.partidasJugadas += 1;
         console.log("\n\n");
         console.log("Apuesta $"+ this.getValorApuesta() );
         console.log("POZO ACUMULADO $"+this.pozoAcumulado);
@@ -96,6 +112,9 @@ export class  Tragamonedas{
         if(this.gano(pantalla)){
             let gano:number= this.pozoAcumulado;
             this.reiniciarPozoAcumulado();
+            this.partidasGanadas +=1;
+            
+
             return   "\n ================= \n"+
                     " || "+pantalla[0]+" || "+pantalla[1]+" || "+pantalla[2]+" || " +"\n"+
                     " ================= \n"+
@@ -105,14 +124,17 @@ export class  Tragamonedas{
 
         }else{
             this.aumentarPozoAcumulado();
+            this.partidasPerdidas+=1;
+            
             return   "\n ================= \n"+
                      " || "+pantalla[0]+" || "+pantalla[1]+" || "+pantalla[2]+" || " +"\n"+
                      " ================= \n"+
                     "Perdio\n"+
                     "Ahora el Pozo Acumulado es de $"+(this.pozoAcumulado)+"\n\n";
-
                     
         }
+        
+        
     }
 
     

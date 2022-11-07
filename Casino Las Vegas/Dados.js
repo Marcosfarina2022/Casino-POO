@@ -56,6 +56,22 @@ var Dados = /** @class */ (function () {
             }
         }
     };
+    Dados.prototype.manipular = function (nombre, texto) {
+        fs.writeFile(nombre, texto, function (error) {
+            if (error) {
+                console.log(colores.red.bold('ERROR'));
+            } /*else{
+                console.log(colores.green.bold('SE CREO EL ARCHIVO'));
+            }*/
+        });
+    };
+    Dados.prototype.modificarArchivo = function (nombre, texto) {
+        this.manipular(nombre, texto);
+    };
+    Dados.prototype.leerArchivo = function (path) {
+        var txtFile = fs.readFileSync(path, 'utf-8');
+        return txtFile;
+    };
     return Dados;
 }());
 exports.Dados = Dados;

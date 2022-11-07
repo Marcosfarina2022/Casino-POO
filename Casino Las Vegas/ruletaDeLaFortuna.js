@@ -27,6 +27,10 @@ var RuletaDeLaFortuna = /** @class */ (function (_super) {
         _this.setProbabilidad();
         _this.pozoAcumulado = 3000;
         _this.setValorApuesta(300);
+        _this.partidasGanadas = 0;
+        _this.partidasPerdidas = 0;
+        _this.partidasJugadas = 0;
+        _this.estadistica = "no Jugo";
         return _this;
     }
     return RuletaDeLaFortuna;

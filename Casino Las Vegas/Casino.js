@@ -14,14 +14,18 @@ var Casino = /** @class */ (function () {
         this.tragamonedas2 = new RuletaDeLaFortuna_1.RuletaDeLaFortuna();
         this.blackJack = new BlackJack_1.BlackJack();
         this.dados = new Dados_1.Dados(1, 500000);
+        this.estadisticasGenerales = "";
     }
+    Casino.prototype.setEstadisticasGenerales = function () {
+        this.estadisticasGenerales = "Quien quiere ser millonario \n" + this.tragamonedas1.estadistica + "\n" + "\nRuleta de la Suerte \n" + this.tragamonedas2.estadistica;
+    };
+    Casino.prototype.getEstadisticasGenerales = function () {
+        return this.estadisticasGenerales;
+    };
     Casino.prototype.manipular = function (nombre, texto) {
         fs.writeFile(nombre, texto, function (error) {
             if (error) {
                 console.log(colores.red.bold('ERROR'));
-            }
-            else {
-                console.log(colores.green.bold('SE CREO EL ARCHIVO'));
             }
         });
     };
@@ -33,6 +37,7 @@ var Casino = /** @class */ (function () {
         return txtFile;
     };
     Casino.prototype.ingresar = function () {
+        this.modificarArchivo("EstadisticasCasino.txt", "");
         var readlineSync = require('readline-sync');
         var ingresar = 1;
         var opcion = 1;
@@ -47,6 +52,7 @@ var Casino = /** @class */ (function () {
                         console.log(this.tragamonedas1.jugar());
                         otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez? ") + '\n' + colores.brightMagenta.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightMagenta.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n"));
                     }
+                    this.tragamonedas1.sumarEstadistica();
                     break;
                 case 2:
                     console.log(colores.brightBlue.bold.italic("su probabilidad de Ganar es: %") + colores.yellow.bold(this.tragamonedas2.getProbabilidad()) + colores.brightGreen.bold.italic(" por Tiro"));
@@ -54,6 +60,7 @@ var Casino = /** @class */ (function () {
                         console.log(this.tragamonedas2.jugar());
                         otraVez = parseInt(readlineSync.question(colores.brightBlue.italic(" Desea jugar Otra Vez? ") + '\n' + colores.brightMagenta.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightMagenta.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n"));
                     }
+                    this.tragamonedas2.sumarEstadistica();
                     break;
                 case 3:
                     while (otraVez == 1) {
@@ -70,8 +77,10 @@ var Casino = /** @class */ (function () {
                 default:
                     break;
             }
-            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ") + '\n' + colores.brightMagenta.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightMagenta.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n");
+            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ") + '\n' + colores.brightMagenta.bold.italic("SI ===> ") + colores.yellow.italic.bold("2") + '\n' + colores.brightMagenta.bold.italic("NO ===> ") + colores.yellow.italic.bold("1") + "\n");
         }
+        this.setEstadisticasGenerales();
+        this.modificarArchivo("EstadisticasCasino.txt", this.getEstadisticasGenerales());
     };
     return Casino;
 }());
