@@ -1,6 +1,3 @@
-import { yellow } from "colors";
-import { Module } from "module";
-import { Casino } from "./Casino";
 let colores = require ('colors');
 export class BlackJack {
     protected carta: number[];
