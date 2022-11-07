@@ -1,5 +1,5 @@
 import { QuienQuiereSerMillonario } from "./QuienQuiereSerMillonario";
-import { RuletaDeLaFortuna } from "./ruletaDeLaFortuna";
+import { RuletaDeLaFortuna } from "./RuletaDeLaFortuna";
 import { BlackJack } from "./BlackJack";
 import { Dados } from "./Dados";
 import * as RLS from "readline-sync";
@@ -50,7 +50,7 @@ export class Casino{
             let otraVez:number = 1;
             switch (opcion) {
                 case 1:
-                    
+                    console.log("su probabilidad de Ganar es: %"+this.tragamonedas1.getProbabilidad()+" por Tiro");
                     while(otraVez==1){
                     console.log(this.tragamonedas1.jugar());
                     otraVez = parseInt(readlineSync.question(" ¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));
@@ -58,7 +58,8 @@ export class Casino{
                     break;
                 
                 case 2:
-
+                    
+                    console.log("su probabilidad de Ganar es: %"+this.tragamonedas2.getProbabilidad()+" por Tiro");
                     while(otraVez==1){
                         console.log(this.tragamonedas2.jugar());
                         otraVez = parseInt(readlineSync.question("¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));

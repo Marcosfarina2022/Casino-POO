@@ -21,9 +21,12 @@ var RuletaDeLaFortuna = /** @class */ (function (_super) {
     __extends(RuletaDeLaFortuna, _super);
     function RuletaDeLaFortuna() {
         var _this = _super.call(this) || this;
-        _this.valorApuesta = 300;
+        _this.valoresGanadores = 9;
+        _this.valoresPosibles = Math.pow(_this.valoresGanadores, _this.columnas);
         _this.tematica = "Ruleta de la Fortuna";
-        _this.probabilidad = 3;
+        _this.setProbabilidad();
+        _this.pozoAcumulado = 3000;
+        _this.setValorApuesta(300);
         return _this;
     }
     return RuletaDeLaFortuna;

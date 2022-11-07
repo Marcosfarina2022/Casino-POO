@@ -21,9 +21,12 @@ var QuienQuiereSerMillonario = /** @class */ (function (_super) {
     __extends(QuienQuiereSerMillonario, _super);
     function QuienQuiereSerMillonario() {
         var _this = _super.call(this) || this;
-        _this.valorApuesta = 150;
+        _this.valoresGanadores = 5;
+        _this.valoresPosibles = Math.pow(_this.valoresGanadores, _this.columnas);
         _this.tematica = "Quien Quiere ser millonario";
-        _this.probabilidad = 2;
+        _this.setProbabilidad();
+        _this.pozoAcumulado = 1500;
+        _this.valorApuesta = 150;
         return _this;
     }
     return QuienQuiereSerMillonario;

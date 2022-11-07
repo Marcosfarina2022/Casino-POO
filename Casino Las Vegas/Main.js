@@ -1,6 +1,6 @@
 "use strict";
 exports.__esModule = true;
-var casino_1 = require("./casino");
+var Casino_1 = require("./Casino");
 var figlet = require('figlet');
 var colores = require('colors');
 figlet(' Gracias!!! \n\n Casino Las Vegas!!', function (err, data) {
@@ -11,7 +11,7 @@ figlet(' Gracias!!! \n\n Casino Las Vegas!!', function (err, data) {
     }
     console.log(data);
 });
-var casino = new casino_1.Casino();
-var nuevotexto = new casino_1.Casino();
+var casino = new Casino_1.Casino();
+var nuevotexto = new Casino_1.Casino();
 console.log(colores.brightGreen(nuevotexto.leerArchivo('Casino.txt')));
 casino.ingresar();

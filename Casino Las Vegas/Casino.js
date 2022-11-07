@@ -2,7 +2,7 @@
 exports.__esModule = true;
 exports.Casino = void 0;
 var QuienQuiereSerMillonario_1 = require("./QuienQuiereSerMillonario");
-var ruletaDeLaFortuna_1 = require("./ruletaDeLaFortuna");
+var RuletaDeLaFortuna_1 = require("./RuletaDeLaFortuna");
 var BlackJack_1 = require("./BlackJack");
 var Dados_1 = require("./Dados");
 var fs = require('fs');
@@ -11,7 +11,7 @@ var colores = require('colors');
 var Casino = /** @class */ (function () {
     function Casino() {
         this.tragamonedas1 = new QuienQuiereSerMillonario_1.QuienQuiereSerMillonario();
-        this.tragamonedas2 = new ruletaDeLaFortuna_1.RuletaDeLaFortuna();
+        this.tragamonedas2 = new RuletaDeLaFortuna_1.RuletaDeLaFortuna();
         this.blackJack = new BlackJack_1.BlackJack();
         this.dados = new Dados_1.Dados(1, 500000);
     }
@@ -42,12 +42,14 @@ var Casino = /** @class */ (function () {
             var otraVez = 1;
             switch (opcion) {
                 case 1:
+                    console.log("su probabilidad de Ganar es: %" + this.tragamonedas1.getProbabilidad() + " por Tiro");
                     while (otraVez == 1) {
                         console.log(this.tragamonedas1.jugar());
                         otraVez = parseInt(readlineSync.question(" ¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));
                     }
                     break;
                 case 2:
+                    console.log("su probabilidad de Ganar es: %" + this.tragamonedas2.getProbabilidad() + " por Tiro");
                     while (otraVez == 1) {
                         console.log(this.tragamonedas2.jugar());
                         otraVez = parseInt(readlineSync.question("¿Desea jugar Otra Vez? 1-SI || 2-NO \n"));

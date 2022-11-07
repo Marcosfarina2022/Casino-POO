@@ -1,4 +1,4 @@
-import { Casino } from "./casino";
+import { Casino } from "./Casino";
 var figlet = require('figlet');
 var colores = require('colors');
 
