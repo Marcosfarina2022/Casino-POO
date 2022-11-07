@@ -11,9 +11,7 @@ figlet(' Gracias!!! \n\n Casino Las Vegas!!', function(err, data) {
     console.log(data)
 });
 let casino:Casino = new Casino();
-let nuevotexto: Casino = new Casino();
-console.log(colores.brightGreen(nuevotexto.leerArchivo('Casino.txt')));
-
+console.log(colores.brightGreen(casino.leerArchivo('Casino.txt')));
 casino.ingresar();
 
 
