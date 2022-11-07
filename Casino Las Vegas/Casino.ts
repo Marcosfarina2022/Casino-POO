@@ -52,10 +52,10 @@ export class Casino{
 
      this.modificarArchivo("EstadisticasCasino.txt","");
      let readlineSync = require('readline-sync');
-        let ingresar:number = 1;
+        let ingresar:number = 2;
         let opcion:number = 1;
         
-        while (ingresar==1){
+        while (ingresar==2){
             console.log(colors.magenta(' **** Elija el juego que quiere jugar **** '+'\n'+'\n'));
 
             opcion = parseInt(readlineSync.question(colores.yellow('1- QuienQuiereSerMillonario'+'\n'+'2- Rueda de la fortuna'+'\n'+'3- Black Jack'+'\n'+'4- Dados'+'\n')));
@@ -110,7 +110,7 @@ export class Casino{
 
 
 
-            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ")+'\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("2")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("1") +"\n");
+            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ")+'\n'+colores.brightMagenta.bold.italic("SI ===> ")+ colores.yellow.italic.bold("1")+'\n'+colores.brightMagenta.bold.italic("NO ===> ") +colores.yellow.italic.bold("2") +"\n");
         }
         this.setEstadisticasGenerales();
         this.modificarArchivo("EstadisticasCasino.txt",this.getEstadisticasGenerales());

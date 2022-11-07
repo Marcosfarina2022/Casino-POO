@@ -39,9 +39,9 @@ var Casino = /** @class */ (function () {
     Casino.prototype.ingresar = function () {
         this.modificarArchivo("EstadisticasCasino.txt", "");
         var readlineSync = require('readline-sync');
-        var ingresar = 1;
+        var ingresar = 2;
         var opcion = 1;
-        while (ingresar == 1) {
+        while (ingresar == 2) {
             console.log(colors.magenta(' **** Elija el juego que quiere jugar **** ' + '\n' + '\n'));
             opcion = parseInt(readlineSync.question(colores.yellow('1- QuienQuiereSerMillonario' + '\n' + '2- Rueda de la fortuna' + '\n' + '3- Black Jack' + '\n' + '4- Dados' + '\n')));
             var otraVez = 1;
@@ -77,7 +77,7 @@ var Casino = /** @class */ (function () {
                 default:
                     break;
             }
-            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ") + '\n' + colores.brightMagenta.bold.italic("SI ===> ") + colores.yellow.italic.bold("2") + '\n' + colores.brightMagenta.bold.italic("NO ===> ") + colores.yellow.italic.bold("1") + "\n");
+            ingresar = readlineSync.question(colores.brightBlue.italic("Desea salir del casino? ") + '\n' + colores.brightMagenta.bold.italic("SI ===> ") + colores.yellow.italic.bold("1") + '\n' + colores.brightMagenta.bold.italic("NO ===> ") + colores.yellow.italic.bold("2") + "\n");
         }
         this.setEstadisticasGenerales();
         this.modificarArchivo("EstadisticasCasino.txt", this.getEstadisticasGenerales());
