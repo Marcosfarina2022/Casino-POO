@@ -16,7 +16,7 @@ export class QuienQuiereSerMillonario extends Tragamonedas{
     protected partidasJugadas: number;
     
     constructor(){
-        super()
+        super();
         this.valoresGanadores = 5;
         this.valoresPosibles = Math.pow(this.valoresGanadores, this.columnas);
         this.tematica = "Quien Quiere ser millonario";

@@ -29,7 +29,7 @@ export class Dados {
 
 
     public getApuestaI():number{
-        return this.apuestaInicial
+        return this.apuestaInicial;
     }
 
     public sumarEstadistica():void{
