@@ -1,13 +1,16 @@
 Quien quiere ser millonario 
- no Jugo
+
+ jugo: 1
+ Gano: 0
+ Perdio: 1
 Ruleta de la fortuna 
- no Jugo
+
+ jugo: 1
+ Gano: 0
+ Perdio: 1
 
 BlackJack 
  no Jugo
 
 Dados 
-
- jugo: 1
- Gano: 0
- Perdio: 1
+ no Jugo
