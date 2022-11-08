@@ -43,7 +43,7 @@ var Casino = /** @class */ (function () {
         var opcion = 1;
         while (ingresar == 2) {
             console.log(colors.magenta(' **** Elija el juego que quiere jugar **** ' + '\n' + '\n'));
-            opcion = parseInt(readlineSync.question(colores.yellow('1- QuienQuiereSerMillonario' + '\n' + '2- Ruleta de la fortuna' + '\n' + '3- Black Jack' + '\n' + '4- Dados' + '\n')));
+            opcion = parseInt(readlineSync.question(colores.yellow('1- Quien Quiere Ser Millonario' + '\n' + '2- Ruleta de la fortuna' + '\n' + '3- Black Jack' + '\n' + '4- Dados' + '\n')));
             var otraVez = 1;
             switch (opcion) {
                 case 1:
