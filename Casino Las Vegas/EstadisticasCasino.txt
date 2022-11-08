@@ -1,20 +1,17 @@
 Quien quiere ser millonario 
 
- jugo: 32
- Gano: 1
- Perdio: 31
-
-Ruleta de la Suerte 
- no Jugo
-
-BlackJack 
-
- jugo: 2
- Gano: 1
+ jugo: 1
+ Gano: 0
  Perdio: 1
 
-Dados 
+Ruleta de la Suerte 
 
- jugo: 4
- Gano: 1
- Perdio: 3
+ jugo: 1
+ Gano: 0
+ Perdio: 1
+
+BlackJack 
+ no Jugo
+
+Dados 
+ no Jugo
