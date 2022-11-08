@@ -26,6 +26,12 @@ export class Dados {
         this.estadistica = " no Jugo";
     }
 
+
+
+    getApuestaI():number{
+        return this.apuestaInicial
+    }
+
     sumarEstadistica():void{
         this.estadistica = "\n jugo: "+this.partidasJugadas+"\n Gano: "+this.partidasGanadas+"\n Perdio: "+this.partidasPerdidas;
     }
