@@ -1,4 +1,4 @@
-import { Casino } from "./Casino";
+
 import * as RLS from "readline-sync";
 var fs = require('fs')
 let colores = require ('colors');
@@ -28,11 +28,11 @@ export class Dados {
 
 
 
-    getApuestaI():number{
+    public getApuestaI():number{
         return this.apuestaInicial
     }
 
-    sumarEstadistica():void{
+    public sumarEstadistica():void{
         this.estadistica = "\n jugo: "+this.partidasJugadas+"\n Gano: "+this.partidasGanadas+"\n Perdio: "+this.partidasPerdidas;
     }
 

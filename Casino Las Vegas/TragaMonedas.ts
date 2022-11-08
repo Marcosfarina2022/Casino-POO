@@ -46,7 +46,7 @@ export class  Tragamonedas{
         return this.valorApuesta;
     }
 
-    getTematica():string{
+    public getTematica():string{
         return this.tematica
     }
 
@@ -82,7 +82,7 @@ export class  Tragamonedas{
 
     }
     
-    getProbabilidad():number{
+    public getProbabilidad():number{
         return  this.probabilidad;
     }
 
@@ -95,14 +95,14 @@ export class  Tragamonedas{
         
     }
 
-    sumarEstadistica():void{
+    public sumarEstadistica():void{
         this.estadistica = "\n jugo: "+this.partidasJugadas+"\n Gano: "+this.partidasGanadas+"\n Perdio: "+this.partidasPerdidas;
     }
 
     
     
     
-    jugar():string{
+    public jugar():string{
         this.partidasJugadas += 1;
         console.log("\n\n");
         console.log("Apuesta $"+ this.getValorApuesta() );

@@ -21,7 +21,7 @@ export class BlackJack {
         this.estadistica = " no Jugo";
     }
 
-    sumarEstadistica():void{
+    public sumarEstadistica():void{
         this.estadistica = "\n jugo: "+this.partidasJugadas+"\n Gano: "+this.partidasGanadas+"\n Perdio: "+this.partidasPerdidas;
     }
 
