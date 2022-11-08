@@ -93,21 +93,6 @@ export class Dados {
           
         }
 
-        public manipular(nombre:string,texto:string):void{
-            fs.writeFile(nombre,texto, error =>{
-                if (error){
-                    console.log(colores.red.bold('ERROR'));
-                }/*else{
-                    console.log(colores.green.bold('SE CREO EL ARCHIVO'));
-                }*/
-            });
-        }
-        public modificarArchivo(nombre:string, texto:string):void{
-            this.manipular(nombre,texto);
-        }
-        public leerArchivo(path:string):string{
-            let txtFile:string = fs.readFileSync(path,'utf-8');
-            return txtFile;
-        }
+        
       
 }

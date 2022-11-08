@@ -15,6 +15,9 @@ var Dados = /** @class */ (function () {
         this.partidasJugadas = 0;
         this.estadistica = " no Jugo";
     }
+    Dados.prototype.getApuestaI = function () {
+        return this.apuestaInicial;
+    };
     Dados.prototype.sumarEstadistica = function () {
         this.estadistica = "\n jugo: " + this.partidasJugadas + "\n Gano: " + this.partidasGanadas + "\n Perdio: " + this.partidasPerdidas;
     };
@@ -65,22 +68,6 @@ var Dados = /** @class */ (function () {
                     break;
             }
         }
-    };
-    Dados.prototype.manipular = function (nombre, texto) {
-        fs.writeFile(nombre, texto, function (error) {
-            if (error) {
-                console.log(colores.red.bold('ERROR'));
-            } /*else{
-                console.log(colores.green.bold('SE CREO EL ARCHIVO'));
-            }*/
-        });
-    };
-    Dados.prototype.modificarArchivo = function (nombre, texto) {
-        this.manipular(nombre, texto);
-    };
-    Dados.prototype.leerArchivo = function (path) {
-        var txtFile = fs.readFileSync(path, 'utf-8');
-        return txtFile;
     };
     return Dados;
 }());
