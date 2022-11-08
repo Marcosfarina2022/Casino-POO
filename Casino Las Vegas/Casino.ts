@@ -27,7 +27,7 @@ export class Casino{
 
     setEstadisticasGenerales():void{
 
-        this.estadisticasGenerales =  "Quien quiere ser millonario \n"+this.tragamonedas1.estadistica+ "\n" +"\nRuleta de la Suerte \n"+ this.tragamonedas2.estadistica+ "\n"+"\nBlackJack \n"+ this.blackJack.estadistica +"\n"+"\nDados \n"+ this.dados.estadistica;
+        this.estadisticasGenerales =  "Quien quiere ser millonario \n"+this.tragamonedas1.estadistica+ "\n" +"Ruleta de la fortuna \n"+ this.tragamonedas2.estadistica+ "\n"+"\nBlackJack \n"+ this.blackJack.estadistica +"\n"+"\nDados \n"+ this.dados.estadistica;
     }
 
     getEstadisticasGenerales():string{
